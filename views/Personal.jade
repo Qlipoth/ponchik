@@ -19,15 +19,15 @@ block content
       .row
         .col-md-12
           .nav-tabs-vertical
-            .tabs.my-tabs-box
+            .tabs.my-tabs-box#personalTabs
               ul.my-tabs.nav.nav-tabs
                 li
-                  a(href='#tab1', data-toggle='tab', aria-expanded='true')
+                  a(href='#tab1', data-toggle='tab', aria-expanded='false')
                     i.fa.fa-file-text-o
                     |&nbsp;
                     span Создать заявку
                 li.active
-                  a(href='#tab2', data-toggle='tab', aria-expanded='false')
+                  a(href='#tab2', data-toggle='tab', aria-expanded='true')
                     i.fa.fa-envelope
                     |&nbsp;
                     span Мои заявки
@@ -52,18 +52,58 @@ block content
                     |&nbsp;
                     span Счета компании
               .panel-body.tab-content
-                #tab1.tab-pane.active
+                #tab1.tab-pane
                   .panel.panel-default
                     .panel-body
-                      p
-                        | 1Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum dolor sem, quis pharetra dui ultricies vel. Cras non pulvinar tellus, vel bibendum magna. Morbi tellus nulla, cursus non nisi sed, porttitor dignissim erat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis commodo lectus. Vivamus vel tincidunt enim, non vulputate ipsum. Ut pellentesque consectetur arcu sit amet scelerisque. Fusce commodo leo eros, ut eleifend massa congue at.
-                  
-                  
-                #tab2.tab-pane
+                        h3
+                          | Публикация заявки
+                        br
+                        .form-group.col-md-6
+                          h4
+                            | Финансовая услуга
+                          .radio
+                            label
+                              input(type='radio', name='financeservice')
+                              | Получить кредит/заем на обеспечение заявки
+                          .radio
+                            label
+                              input(type='radio', name='financeservice')
+                              | Получить банковскую гаранию для обеспечения исполнения контракта 
+                          .radio
+                            label
+                              input(type='radio', name='financeservice')
+                              | Получить кредит/заем на исполнение контракта
+                        .form-group.col-md-6
+                          h4
+                            | Информация о тендере
+                          div.form-inline.notice
+                            label(for='notice') 
+                              span Введите номер извещения с сайта:
+                              a(href="http://zakupki.go.ru") 
+                                |zakupki.go.ru:
+                              br
+                              span (Найти извещение можно
+                              a(href="http://zakupki.go.ru") 
+                                |здесь)
+                            input#notice.form-control(type='text')
+                        .col-md-12
+                          button.btn.btn-primary
+                            | Получить
+                #tab2.tab-pane.active
                   .panel.panel-default
                     .panel-body
-                      p
-                        |2 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum dolor sem, quis pharetra dui ultricies vel. Cras non pulvinar tellus, vel bibendum magna. Morbi tellus nulla, cursus non nisi sed, porttitor dignissim erat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis commodo lectus. Vivamus vel tincidunt enim, non vulputate ipsum. Ut pellentesque consectetur arcu sit amet scelerisque. Fusce commodo leo eros, ut eleifend massa congue at.
+                      h3
+                          | Заявки на финансовые услуги тендеров
+                      br
+                      .form-group.clearfix
+                        p.warn
+                          | Уважаемые пользователи, черновики заявок теперь можно искать и просматривать в форме "Мои заявки"
+                        br
+                        h4 Фильтр
+                        re-table(v-bind:rows="rows" v-bind:config="config")
+                        .clearfix
+                          button.btn.btn-primary
+                            | Получить
                     
                 #tab3.tab-pane
                   .panel.panel-default

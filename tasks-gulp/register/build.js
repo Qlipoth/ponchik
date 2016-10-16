@@ -5,8 +5,8 @@ module.exports = function (gulp, plugins) {
 			// 'copy:dev',
 			'copy:head',     // assets + bower
         // 'linkAssetsBuild',
-	        // 'sass:dev',
-	        // 'sync:dev',  // синхронизирую assets
+	        'sass:dev',
+	        'sync:dev',  // синхронизирую assets
 	        'sync:bower',  // синхронизирую bower
 			cb
 		);

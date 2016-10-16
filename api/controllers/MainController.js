@@ -13,6 +13,7 @@ module.exports = {
                 {name: 'Главная', href: '/'},
                 {name: 'Личный кабинет', href: '/personal'},
             ],
+            vue: '/Vues/personal.js'
         }));
     },
 

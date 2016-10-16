@@ -1,10 +1,45 @@
+// data-table
+    #body .sorting:before,
+    #body .sorting_asc:before,
+    #body .sorting_desc:before {
+        display: none;
+    }
+    #body .sorting:after,
+    #body .sorting_asc:after,
+    #body .sorting_desc:after {
+        line-height: 30px;
+    }
+    #body .re-datatable {
+        margin-top: 0 !important;
+        min-width: 100%;
+    }
+    #body .dt-button-collection.dropdown-menu>.active>a {
+        color: #000;
+        background-color: #ffffff;
+    }
+    #body .dt-button-collection.dropdown-menu>.active>a:focus,
+    #body .dt-button-collection.dropdown-menu>.active>a:hover {
+        background-color: #f0f4f9;
+    }
+    #body .dt-button-collection.dropdown-menu .dt-button.buttons-columnVisibility a {
+        opacity: 0.3;
+    }
+    #body .dt-button-collection.dropdown-menu .dt-button.buttons-columnVisibility.active a {
+        opacity: 1;
+    }
+    #body .re-datatable th {
+        border: solid 1px rgb(206, 216, 227);
+    }
+    
 #body {
-	.page-content-wrap, .my-tabs-box {
-		height: calc(100vh - 119px);
-	}
+    // datatables
+    
+    .page-content-wrap,
+    .my-tabs-box {
+        height: calc(100vh - 100px);
+    }
     .page-content-wrap {
         margin-top: 15px;
-        
     }
     // Над шапкой
     .pre-header {
@@ -21,10 +56,10 @@
     }
     // Навигация
     .nav-box {
-    	background: #33414e;
+        background: #33414e;
     }
     .my-nav {
-    	width: auto;
+        width: auto;
         .description {
             display: block;
         }
@@ -56,23 +91,22 @@
     }
     // Правая часть
     .navbar-right {
-    	margin-right: 0;
-    	.h5 {
-    		margin: 0;
-    		a {
-    			color: #fff;
-    		}
-    	}
+        margin-right: 0;
+        .h5 {
+            margin: 0;
+            a {
+                color: #fff;
+            }
+        }
     }
     // Личный кабинет
     .personal {
-    	.cnt {
-        	margin-top: 0;
-    		
-    	}
-    	.breadcrumb {
-    		margin-left: 300px;
-    	}
+        .cnt {
+            margin-top: 0;
+        }
+        .breadcrumb {
+            margin-left: 300px;
+        }
     }
     // табы
     .my-tabs-box {
@@ -80,13 +114,12 @@
         .my-tabs {
             margin-left: -10px;
             margin-top: -40px;
-            
             background: #33414e;
             position: static;
             min-width: 300px;
             a {
                 span {
-                	margin-left: 5px;
+                    margin-left: 5px;
                 }
                 background: #33414e;
                 padding: 10px 15px;
@@ -106,6 +139,35 @@
         }
         .tab-content {
             margin-left: 0;
+            width: 100%;
+            min-width: 300px;
+            .tap-pane {
+            	>.panel {
+            		margin-bottom: 0;
+            	}
+            }
+        }
+        // Создать заявку
+        .notice {
+            label {
+                vertical-align: middle;
+                font-weight: normal;
+            }
+            #notice {
+                margin-left: 5px;
+            }
+        }
+        // мои заявки
+        .warn {
+            background: rgba(51, 122, 183, 0.19);
+            border-left: 2px solid rgb(51, 122, 183);
+            padding: 10px 15px;
+        }
+        #tab1 {
+            .col-md-6,
+            .col-md-12 {
+                padding-left: 0;
+            }
         }
     }
 }

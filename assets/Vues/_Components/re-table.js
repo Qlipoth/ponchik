@@ -26,6 +26,7 @@ Vue.component('re-table', Vue.extend({
         onrowclick: {},
         // конфиг таблицы
         config: {
+            responsive: true,
             type: Object,
             coerce: function(obj) {
                 return _.extend({
@@ -329,11 +330,11 @@ Vue.component('re-table', Vue.extend({
             }
 
             vm.DT = $(dt).DataTable(conf);
-             $('.dataTables_scrollBody').mCustomScrollbar({axis: "x"});
+             // $('.dataTables_scrollBody').mCustomScrollbar({axis: "x"});
             // Получаю данные из строки по клику, эмичу событие наверх
             vm.DT.on( 'click', 'tr>td.clicable', function() {
                 var rowInfo = vm.DT.row(this).data();
-                vm.$emit('onrowclick', rowInfo);
+                // vm.$emit('onrowclick', rowInfo);
             });
         }
     },

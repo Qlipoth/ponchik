@@ -7,7 +7,7 @@ var page_actions = function(){
     var html_click_avail = true;
 
     $("html").on("click", function(){
-        if(html_click_avail)
+        // if(html_click_avail)
             // $(".x-navigation-horizontal li,.x-navigation-minimized li,.x-features .x-features-search,.x-features .x-features-profile").removeClass('active');
 
     });
@@ -337,6 +337,7 @@ var page_actions = function(){
 
 $(document).ready(function(){
     page_actions();
+
     // $('body').mCustomScrollbar();
     
     
