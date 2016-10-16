@@ -1,0 +1,137 @@
+base(href='/')
+
+meta(http-equiv='Content-Type', content='text/html; charset=utf-8')
+meta(http-equiv='X-UA-Compatible', content='IE=edge')
+meta(name='viewport', content='width=device-width, initial-scale=1')
+
+
+link(rel='shortcut icon', type='image/x-icon', href='/favicon.ico')
+
+
+//-  ╔═╗╔╦╗╦ ╦╦  ╔═╗╔═╗
+//-  ╚═╗ ║ ╚╦╝║  ║╣ ╚═╗
+//-  ╚═╝ ╩  ╩ ╩═╝╚═╝╚═╝
+//- <!-- build:css css/combined.min.css -->
+// bower:css
+link(rel='stylesheet', href='/bower_components/magnific-popup/dist/magnific-popup.css')
+link(rel='stylesheet', href='/bower_components/datatables.net-bs/css/dataTables.bootstrap.css')
+link(rel='stylesheet', href='/bower_components/datatables.net-buttons-bs/css/buttons.bootstrap.css')
+link(rel='stylesheet', href='/bower_components/Swiper/dist/css/swiper.css')
+link(rel='stylesheet', href='/bower_components/bootstrap-select/dist/css/bootstrap-select.css')
+link(rel='stylesheet', href='/bower_components/ion.rangeSlider/css/ion.rangeSlider.css')
+link(rel='stylesheet', href='/bower_components/ion.rangeSlider/css/ion.rangeSlider.skinFlat.css')
+link(rel='stylesheet', href='/bower_components/bootstrap-daterangepicker/daterangepicker.css')
+link(rel='stylesheet', href='/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css')
+// endbower
+link(rel='stylesheet', href='styles/theme-default.css')
+link(rel='stylesheet', href='styles/main.css')
+link(rel='stylesheet', href='css/my-style.css')
+//- <!-- endbuild -->
+
+
+
+//-  ╔═╗╔═╗╦═╗╦╔═╗╔╦╗╔═╗
+//-  ╚═╗║  ╠╦╝║╠═╝ ║ ╚═╗
+//-  ╚═╝╚═╝╩╚═╩╩   ╩ ╚═╝
+
+//- компиллированные jade шаблоны
+script(type='text/javascript', src='jade_templates.js')
+
+//- <!-- build:js js/combined.min.js -->
+
+//- почему-то шаблон работает только со своим jq...
+script(type='text/javascript', src='js/plugins/jquery/jquery.min.js')
+
+// bower:js
+script(src='/bower_components/jquery/dist/jquery.js')
+script(src='/bower_components/magnific-popup/dist/jquery.magnific-popup.js')
+script(src='/bower_components/jquery-ui/jquery-ui.js')
+script(src='/bower_components/lodash/lodash.js')
+script(src='/bower_components/vue/dist/vue.js')
+script(src='/bower_components/datatables/media/js/jquery.dataTables.js')
+script(src='/bower_components/datatables.net/js/jquery.dataTables.js')
+script(src='/bower_components/datatables.net-bs/js/dataTables.bootstrap.js')
+script(src='/bower_components/datatables.net-buttons/js/dataTables.buttons.js')
+script(src='/bower_components/datatables.net-buttons/js/buttons.colVis.js')
+script(src='/bower_components/datatables.net-buttons/js/buttons.flash.js')
+script(src='/bower_components/datatables.net-buttons/js/buttons.html5.js')
+script(src='/bower_components/datatables.net-buttons/js/buttons.print.js')
+script(src='/bower_components/datatables.net-buttons-bs/js/buttons.bootstrap.js')
+script(src='/bower_components/datatables-colresize/dataTables.colResize.js')
+script(src='/bower_components/moment/moment.js')
+script(src='/bower_components/vue-strap/dist/vue-strap.js')
+script(src='/bower_components/vue-strap/dist/vue-strap.min.js')
+script(src='/bower_components/moment-range/dist/moment-range.js')
+script(src='/bower_components/d3/d3.js')
+script(src='/bower_components/topojson/topojson.js')
+script(src='/bower_components/datamaps/dist/datamaps.all.js')
+script(src='/bower_components/d3pie/d3pie/d3pie.min.js')
+script(src='/bower_components/d3-timeline/src/d3-timeline.js')
+script(src='/bower_components/Swiper/dist/js/swiper.js')
+script(src='/bower_components/bootstrap-select/dist/js/bootstrap-select.js')
+script(src='/bower_components/ion.rangeSlider/js/ion.rangeSlider.js')
+script(src='/bower_components/bootstrap-daterangepicker/daterangepicker.js')
+script(src='/bower_components/jquery-mousewheel/jquery.mousewheel.js')
+script(src='/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.js')
+// endbower
+
+//- исходники шаблона
+script(type='text/javascript', src='js/plugins/bootstrap/bootstrap.min.js')
+//- script(type='text/javascript', src='js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js')
+script(type='text/javascript', src='js/plugins/icheck/icheck.min.js')
+script(type='text/javascript', src='js/plugins/nvd3/nv.d3.min.js')
+script(type='text/javascript', src='js/plugins/morris/raphael-min.js')
+script(type='text/javascript', src='js/plugins/morris/morris.min.js')
+script(type='text/javascript', src='js/plugins/knob/jquery.knob.min.js')
+script(type='text/javascript', src='js/plugins.js')
+script(type='text/javascript', src='js/actions.js')
+script(type='text/javascript', src='js/fnsclock.js')
+script(src='/bower_components/moment/locale/ru.js')
+script(src='js/plugins/gridster/jquery.gridster.js')
+link(rel='stylesheet', href='js/plugins/gridster/jquery.gridster.min.css')
+
+
+
+//- глобальные методы, локализации, etc...
+script(type='text/javascript', src='js/main.js')
+script(type='text/javascript', src='js/demo_charts_nvd3.js')
+//- script(src='/bower_components/bootstrap-treeview/dist/bootstrap-treeview.min.js')
+//- script(type='text/javascript', src='js/tree.js')
+script(type='text/javascript', src='Vues/scroll.js')
+//- Vue-components
+script(type='text/javascript', src='Vues/_Components/content.js')
+script(type='text/javascript', src='Vues/_Components/sidebar.js')
+script(type='text/javascript', src='Vues/_Components/selector.js')
+script(type='text/javascript', src='Vues/_Components/pies.js')
+script(type='text/javascript', src='Vues/_Components/re-modal.js')
+script(type='text/javascript', src='Vues/_Components/re-table.js')
+script(type='text/javascript', src='Vues/_Components/chart-tile.js')
+script(type='text/javascript', src='Vues/_Components/timeline.js')
+script(type='text/javascript', src='Vues/_Components/tile.js')
+script(type='text/javascript', src='Vues/_Components/totalchart.js')
+script(type='text/javascript', src='Vues/_Components/clock.js')
+script(type='text/javascript', src='Vues/_Components/re-button-selector.js')
+script(type='text/javascript', src='Vues/_Components/knob.js')
+script(type='text/javascript', src='Vues/_Components/toggler.js')
+script(type='text/javascript', src='Vues/_Components/gradtimeline.js')
+script(type='text/javascript', src='Vues/_Components/statistic.js')
+script(type='text/javascript', src='Vues/_Components/periodpicker.js')
+script(type='text/javascript', src='Vues/_Components/vue-animated-list.js')
+script(type='text/javascript', src='Vues/_Components/sorter.js')
+script(type='text/javascript', src='Vues/_Components/re-combo.js')
+script(type='text/javascript', src='Vues/_Components/service-groups.js')
+script(type='text/javascript', src='Vues/_Components/service-groups-table.js')
+script(type='text/javascript', src='Vues/_Components/timer.js')
+script(type='text/javascript', src='Vues/_Components/service.js')
+script(type='text/javascript', src='Vues/_Components/incident.js')
+script(type='text/javascript', src='Vues/_Components/current-service-state.js')
+script(type='text/javascript', src='Vues/_Components/incident-pie.js')
+script(type='text/javascript', src='Vues/_Components/re-slider.js')
+script(type='text/javascript', src='Vues/_Components/multibarchart.js')
+//- script(type='text/javascript', src='Vues/charts/charts.js')
+
+
+script(src='Vues/map/component.js')
+script(src='Vues/pie/component.js')
+
+//- <!-- endbuild -->

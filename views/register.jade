@@ -1,0 +1,91 @@
+extends ./_layouts/main.jade
+
+block append head
+  - var form = req.flash('signup')[0] || {}
+  //- +globalVar('tags', tags)
+  //- script(src='/ViewControllers/index.js')
+  //- style.
+
+
+block body
+  .registration-container
+    .registration-box.animated.fadeInDown
+      .registration-logo
+      .registration-body
+        .registration-title
+          strong Registration,
+          | use form bellow
+        .registration-subtitle
+          // TODO:
+          | Lorem ipsum dolor sit amet, consectetur adipiscing elit. In odio mauris, maximus ac sapien sit amet. 
+
+        for error in req.flash('error')
+          +error(error)
+        
+        form(action='/doRegister', method='post').form-horizontal
+          h4 Personal info
+          .form-group
+            .col-md-12
+              input.form-control(
+                type='text',
+                name='firstname',
+                value=form.firstname,
+                placeholder='First Name',
+                )
+          .form-group
+            .col-md-12
+              input.form-control(
+                type='text',
+                name='surname',
+                value=form.surname,
+                placeholder='Surname',
+                )
+          .form-group
+            .col-md-12
+              input.form-control(
+                type='text',
+                name='email',
+                value=form.email,
+                placeholder='E-mail',
+                )
+          h4 Authentication
+          .form-group
+            .col-md-12
+              input.form-control(
+                type='text',
+                name='login',
+                value=form.login,
+                placeholder='Login',
+                )
+          .form-group
+            .col-md-12
+              input.form-control(
+                type='password',
+                name='password',
+                value=form.password,
+                placeholder='Password'
+                )
+          .form-group
+            .col-md-12
+              input.form-control(
+                type='password',
+                name='repassword',
+                value=form.repassword,
+                placeholder='Re-Password',
+                )
+          .form-group.push-up-30
+            .col-md-6
+              a.btn.btn-link.btn-block(href='/auth') Already have an account?
+            .col-md-6
+              button.btn.btn-danger.btn-block Sign Up
+        //- eo form
+      .registration-footer
+        .pull-left
+          | © 2015 AppName
+        .pull-right
+          a(href='#') About
+          |  |
+          a(href='#') Privacy
+          |  |
+          a(href='#') Contact Us
+  

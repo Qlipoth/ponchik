@@ -1,0 +1,38 @@
+extends ./_layouts/main.jade
+
+block append head
+  //- +globalVar('tags', tags)
+  //- script(src='/ViewControllers/index.js')
+  //- style.
+  if vue
+    script(src=vue)
+
+
+block content
+  if html
+    .panel
+      .panel-body #{html}
+  if vue 
+    .page-title
+        div.col-md-7
+          h3.fns-h2
+            a(href="/")
+              span
+                img(src="/img/gerb.jpg" style="max-width: 45px;")
+              span(style="vertical-align: -3px;")  #{title || 'Title goes here'}
+        div.col-md-5.fns-row
+          div.right-part-header
+            span.h1.pull-left
+              i.fa.fa-question-circle.fns-h2
+            span#changeTempalte.h1.pull-left
+              a(href='/editTemplate')
+                i.fa.fa-cog.fns-h2
+          div#fnsclock.pull-right
+            div.left-part
+              div#wd
+              div#d
+            div.right-part
+              span.h1
+
+    include ./_layouts/parts/breadcrumbs
+    #vue

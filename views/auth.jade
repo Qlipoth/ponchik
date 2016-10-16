@@ -1,0 +1,53 @@
+extends ./_layouts/main.jade
+
+block append head
+  - var form = req.flash('signup')[0] || {}
+  //- +globalVar('tags', tags)
+  //- script(src='/ViewControllers/index.js')
+  //- style.
+
+
+block body
+
+  .login-container
+    .login-box.animated.fadeInDown
+      .login-logo
+      .login-body
+        .login-title
+          strong Welcome
+          | , Please login
+
+        for error in req.flash('error')
+          +error(error)
+
+        form.form-horizontal(action='/doLogin', method='post')
+          .form-group
+            .col-md-12
+              input.form-control(
+                type='text',
+                name='login',
+                value=form.login,
+                placeholder='Login',
+                )
+          .form-group
+            .col-md-12
+              input.form-control(
+                type='password',
+                name='password',
+                value=form.password,
+                placeholder='Password'
+                )
+          .form-group
+            .col-md-6
+              a.btn.btn-link.btn-block(href='/register') Need an account?
+            .col-md-6
+              button.btn.btn-info.btn-block Log In
+      .login-footer
+        .pull-left
+          | © 2015 AppName
+        .pull-right
+          a(href='#') About
+          |  |
+          a(href='#') Privacy
+          |  |
+          a(href='#') Contact Us

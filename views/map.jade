@@ -1,0 +1,50 @@
+extends ./_layouts/main.jade
+
+block topnav
+block breadcrumbs
+block title
+block append head
+  //- +globalVar('tags', tags)
+  script(src='Vues/map/index.js')
+  style.
+    #map {
+      height: calc(100vh - 100px);
+      background: #33414e;
+      }
+      #map div {
+        height: 100%;
+        }
+      #map svg {
+        height: 100%;
+        }
+        #map svg path {
+          }
+        #map svg .arc {
+          display: none;
+          }
+      #map .buttons {
+        display: block;
+        }
+        #map .buttons .btn {
+          border: solid 1px #ccc;
+          }
+    #body .page-content {
+      background: #33414e;
+      }
+    .re-button-selector {display: inline-block;}
+
+    #map .fns-map-modal {
+      max-width: 250px;
+      }
+
+    .modal-table tr {
+      border-top: solid 1px rgba(0,0,0, 0.3);
+      border-bottom: solid 1px rgba(0,0,0, 0.3);
+      }
+    .modal-table tr > * {
+      padding: 5px;
+      }
+
+
+block content
+  #vue
