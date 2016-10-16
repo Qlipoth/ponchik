@@ -2,7 +2,7 @@ mixin Navigation(list)
   for item in list
     if (canSee(item, user))
       if item.children
-        li.xn-openable
+        li.h5.xn-openable
           a(href=item.href ? item.href : '/')
             if item.icon
               span(class=item.icon)
@@ -17,8 +17,13 @@ mixin Navigation(list)
                     i.fa.fa-minus
                   | !{child.name}
       else
-        li
+        li.h5
           a(href=item.href ? item.href : '/')
               if item.icon
                 i(class=item.icon)
-              | !{item.name}
+              span
+                | !{item.name}
+              if item.description
+                span.description
+                  | !{item.description}
+      

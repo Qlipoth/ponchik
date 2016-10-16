@@ -1,0 +1,111 @@
+#body {
+	.page-content-wrap, .my-tabs-box {
+		height: calc(100vh - 119px);
+	}
+    .page-content-wrap {
+        margin-top: 15px;
+        
+    }
+    // Над шапкой
+    .pre-header {
+        background: #fff;
+        li {
+            margin: 15px 0;
+        }
+        ul {
+            margin: 0;
+        }
+        .reg {
+            border-left: 1px solid #6c83a5;
+        }
+    }
+    // Навигация
+    .nav-box {
+    	background: #33414e;
+    }
+    .my-nav {
+    	width: auto;
+        .description {
+            display: block;
+        }
+        height: auto;
+        .xn-logo {
+            border-bottom: none;
+            a {
+                height: 78px;
+                width: 300px;
+                background-size: contain;
+            }
+        }
+        li {
+            border-bottom: 2px solid #33414e;
+            > a {
+                text-align: center;
+                font-size: 14px;
+                padding: 28px 12px 28px;
+            }
+        }
+        li.h5 {
+            &:hover {
+                border-bottom: 2px solid #ffd559;
+            }
+        }
+        >.active {
+            border-bottom: 2px solid #ffd559;
+        }
+    }
+    // Правая часть
+    .navbar-right {
+    	margin-right: 0;
+    	.h5 {
+    		margin: 0;
+    		a {
+    			color: #fff;
+    		}
+    	}
+    }
+    // Личный кабинет
+    .personal {
+    	.cnt {
+        	margin-top: 0;
+    		
+    	}
+    	.breadcrumb {
+    		margin-left: 300px;
+    	}
+    }
+    // табы
+    .my-tabs-box {
+        display: flex;
+        .my-tabs {
+            margin-left: -10px;
+            margin-top: -40px;
+            
+            background: #33414e;
+            position: static;
+            min-width: 300px;
+            a {
+                span {
+                	margin-left: 5px;
+                }
+                background: #33414e;
+                padding: 10px 15px;
+                color: #fff;
+                &:hover {
+                    background: #3d4e5d;
+                    color: #ffd559;
+                }
+            }
+            li.active {
+                a {
+                    border-radius: 0;
+                    background: #3d4e5d;
+                    color: #ffd559;
+                }
+            }
+        }
+        .tab-content {
+            margin-left: 0;
+        }
+    }
+}

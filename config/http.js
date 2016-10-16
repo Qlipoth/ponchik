@@ -15,7 +15,7 @@ module.exports.http = {
         passportInit: require('passport').initialize(),
         passportSession : require('passport').session(),
         setLocals : function(req, res, cb) {
-            res.locals.user = req.user || {roles: [{name:'ghost'}], theme: '/styles/themes/dark.css', isGhost: true};
+            res.locals.user = req.user || {roles: [{name:'ghost'}], isGhost: true};
             res.locals.hasRoles = function(roleNames) {
                 var ok = false;
                 if (!Array.isArray(roleNames)) {

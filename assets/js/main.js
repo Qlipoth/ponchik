@@ -155,7 +155,7 @@ $(document).ready(function() {
 
 
     // open menu
-    var hrefs = $('.x-navigation a[href="'+location.pathname+'"]');
+    var hrefs = $('.x-navigation li.h5 a[href="'+location.pathname+'"]');
     _.each(hrefs, function(href) {
         var li = $(href).parents('li');
         while (li && li.length) {

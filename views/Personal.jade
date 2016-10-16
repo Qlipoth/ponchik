@@ -1,0 +1,90 @@
+extends ./_layouts/main.jade
+
+block append head
+  //- +globalVar('tags', tags)
+  //- script(src='/ViewControllers/index.js')
+  //- style.
+  if vue
+    script(src=vue)
+block content
+  if html
+    .panel
+      .panel-body #{html}
+  .page-content.personal
+    //- include ./_layouts/parts/preheader
+    //- .page-content-header
+    include ./_layouts/parts/navigation
+    include ./_layouts/parts/breadcrumbs     
+    .page-content-wrap.cnt
+      .row
+        .col-md-12
+          .nav-tabs-vertical
+            .tabs.my-tabs-box
+              ul.my-tabs.nav.nav-tabs
+                li
+                  a(href='#tab1', data-toggle='tab', aria-expanded='true')
+                    i.fa.fa-file-text-o
+                    |&nbsp;
+                    span Создать заявку
+                li.active
+                  a(href='#tab2', data-toggle='tab', aria-expanded='false')
+                    i.fa.fa-envelope
+                    |&nbsp;
+                    span Мои заявки
+                li
+                  a(href='#tab3', data-toggle='tab', aria-expanded='false')
+                    i.fa.fa-commenting-o
+                    |&nbsp;
+                    span Запросы документов
+                li
+                  a(href='#tab4', data-toggle='tab', aria-expanded='false')
+                    i.fa.fa-folder
+                    |&nbsp;
+                    span Договоры
+                li
+                  a(href='#tab5', data-toggle='tab', aria-expanded='false')
+                    i.fa.fa-files-o
+                    |&nbsp;
+                    span Полученные кредиты/займы
+                li
+                  a(href='#tab6', data-toggle='tab', aria-expanded='false')
+                    i.fa.fa-list
+                    |&nbsp;
+                    span Счета компании
+              .panel-body.tab-content
+                #tab1.tab-pane.active
+                  .panel.panel-default
+                    .panel-body
+                      p
+                        | 1Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum dolor sem, quis pharetra dui ultricies vel. Cras non pulvinar tellus, vel bibendum magna. Morbi tellus nulla, cursus non nisi sed, porttitor dignissim erat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis commodo lectus. Vivamus vel tincidunt enim, non vulputate ipsum. Ut pellentesque consectetur arcu sit amet scelerisque. Fusce commodo leo eros, ut eleifend massa congue at.
+                  
+                  
+                #tab2.tab-pane
+                  .panel.panel-default
+                    .panel-body
+                      p
+                        |2 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum dolor sem, quis pharetra dui ultricies vel. Cras non pulvinar tellus, vel bibendum magna. Morbi tellus nulla, cursus non nisi sed, porttitor dignissim erat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis commodo lectus. Vivamus vel tincidunt enim, non vulputate ipsum. Ut pellentesque consectetur arcu sit amet scelerisque. Fusce commodo leo eros, ut eleifend massa congue at.
+                    
+                #tab3.tab-pane
+                  .panel.panel-default
+                    .panel-body
+                      p
+                        | 3Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum dolor sem, quis pharetra dui ultricies vel. Cras non pulvinar tellus, vel bibendum magna. Morbi tellus nulla, cursus non nisi sed, porttitor dignissim erat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis commodo lectus. Vivamus vel tincidunt enim, non vulputate ipsum. Ut pellentesque consectetur arcu sit amet scelerisque. Fusce commodo leo eros, ut eleifend massa congue at.
+                #tab4.tab-pane
+                  .panel.panel-default
+                    .panel-body
+                      p
+                        |4 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum dolor sem, quis pharetra dui ultricies vel. Cras non pulvinar tellus, vel bibendum magna. Morbi tellus nulla, cursus non nisi sed, porttitor dignissim erat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis commodo lectus. Vivamus vel tincidunt enim, non vulputate ipsum. Ut pellentesque consectetur arcu sit amet scelerisque. Fusce commodo leo eros, ut eleifend massa congue at.
+                  
+                #tab5.tab-pane
+                  .panel.panel-default
+                    .panel-body
+                      p
+                        | 5Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum dolor sem, quis pharetra dui ultricies vel. Cras non pulvinar tellus, vel bibendum magna. Morbi tellus nulla, cursus non nisi sed, porttitor dignissim erat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis commodo lectus. Vivamus vel tincidunt enim, non vulputate ipsum. Ut pellentesque consectetur arcu sit amet scelerisque. Fusce commodo leo eros, ut eleifend massa congue at.
+                  p
+                    
+                #tab6.tab-pane
+                  .panel.panel-default
+                    .panel-body
+                      p
+                        | 6Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum dolor sem, quis pharetra dui ultricies vel. Cras non pulvinar tellus, vel bibendum magna. Morbi tellus nulla, cursus non nisi sed, porttitor dignissim erat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis commodo lectus. Vivamus vel tincidunt enim, non vulputate ipsum. Ut pellentesque consectetur arcu sit amet scelerisque. Fusce commodo leo eros, ut eleifend massa congue at.

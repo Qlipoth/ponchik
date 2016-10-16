@@ -5,27 +5,11 @@ html.body-full-height
   head
     block head
       include ./parts/_head
-      link(rel='stylesheet', href='#{user.theme}')
     title
       block pageTitle
-        | #{pageTitle ? pageTitle+' - ' : title ? title+' - ' : ''}
-        | retreaver
+        | #{pageTitle ? pageTitle : title ? title+' - ' : ''}
     body#body
         +globalVar('defaultDateFormat', ddf)
         block body
-            .page-container
-              .page-sidebar.page-sidebar-fixed.scroll.mCustomScrollbar._mCS_1.mCS-autoHide
-                .mCustomScrollBox.mCS-light.mCSB_vertical.mCSB_inside
-                  .mCSB_container
-                    include ./parts/navigation
-              .page-content
-                //- include ./parts/topnav
-                //- include ./parts/breadcrumbs
-                //- .page-title
-                //-   h2
-                //-     //- span.fa.fa-arrow-circle-o-left
-                //-     block title
-                //-       |  #{title || 'Title goes here'}
-                .page-content-wrap.cnt
-                  .row
-                    block content
+            .page-container.page-navigation-top.page-navigation-top-custom
+                block content

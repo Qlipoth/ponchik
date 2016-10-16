@@ -1,42 +1,46 @@
 module.exports.navigation = [
-    // {
-    //     name   : 'Register',
-    //     href   : '/register',
-    //     icon   : 'fa fa-envelope',
-    //     canSee : ['ghost'],
-    // },
-    // {
-    //     name   : 'Auth',
-    //     href   : '/auth',
-    //     icon   : 'fa fa-sign-in',
-    //     canSee : ['ghost'],
-    // },
+ {
+        name   : 'Получить тендерный заем',
+        href   : '/',
+        canSee : ['ghost'],
+    },
      {
-        name   : 'Список сервисов',
-        href   : '/serviceList',
-        icon   : 'fa fa-list-ul',
+        name   : 'Разместить финансы',
+        href   : '/locateFinances',
+        canSee : ['ghost'],
     },
     {
-        name   : 'Сводная',
-        icon   : 'fa fa-desktop',
-        children : [
-            {
-                name   : 'Online',
-                href   : '/charts#tab=1',
-                icon   : '',
-            },
-            {
-                name   : 'Статистика',
-                href   : '/charts#tab=2',
-                icon   : '',
-            },
-            {
-                name   : 'Управление',
-                href   : '/charts#tab=3',
-                icon: '',
-            },
-        ],
+        name   : 'Финансовые сервисы',
+        href   : '/financeServices',
+        canSee : ['ghost'],
     },
+    {
+        name   : 'О компании',
+        href   : '/about',
+        canSee : ['ghost'],
+    },
+     
+    // {
+    //     name   : 'Сводная',
+    //     icon   : 'fa fa-desktop',
+    //     children : [
+    //         {
+    //             name   : 'Online',
+    //             href   : '/charts#tab=1',
+    //             icon   : '',
+    //         },
+    //         {
+    //             name   : 'Статистика',
+    //             href   : '/charts#tab=2',
+    //             icon   : '',
+    //         },
+    //         {
+    //             name   : 'Управление',
+    //             href   : '/charts#tab=3',
+    //             icon: '',
+    //         },
+    //     ],
+    // },
     // {
     //     name   : 'Admin panel',
     //     href   : '/admin',

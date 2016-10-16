@@ -7,7 +7,9 @@ module.exports.routes = {
     //
     // Main page
     //
-    'get  /': 'Dashboard.index',
+    'get  /': 'Main',
+    // Личный кабинет
+    'get  /personal': 'Main.personal',
   
 
     //----------------------------------------------------------------

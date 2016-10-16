@@ -56,7 +56,7 @@ module.exports.bootstrap = function(cb) {
 
     return Q()
         .then(filler.process())
-        .then(cron.init())
+        // .then(cron.init())
         .nodeify(cb)
         ;
 
