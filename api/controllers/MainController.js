@@ -23,10 +23,14 @@ module.exports = {
 
 
     deposites: function(req, res) {
-        return res.render('Main', _.extend({}, toView, {
+        return res.render('Finances', _.extend({}, toView, {
             title: 'Разместить финансы',
             pageTitle: 'Разместить финансы',
-            html: 'Разместить финансы',
+             bc: [
+                {name: 'Главная', href: '/'},
+                {name: 'Разместить финансы', href: '/personal'},
+            ],
+            vue: '/Vues/finances.js'
         }));
     },
     services: function(req, res) {
