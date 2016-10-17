@@ -19,7 +19,12 @@ module.exports.navigation = [
         href   : '/about',
         canSee : ['ghost'],
     },
-     
+    {
+        name   : 'Личный кабинет',
+        href   : '/personal',
+        canSee : ['ghost'],
+    },
+
     // {
     //     name   : 'Сводная',
     //     icon   : 'fa fa-desktop',

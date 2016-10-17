@@ -19,15 +19,15 @@ block content
       .row
         .col-md-12
           .nav-tabs-vertical
-            .tabs.my-tabs-box#personalTabs
+            .tabs#personalTabs
               ul.my-tabs.nav.nav-tabs
-                li
-                  a(href='#tab1', data-toggle='tab', aria-expanded='false')
+                li.active
+                  a(href='#tab1', data-toggle='tab', aria-expanded='true')
                     i.fa.fa-file-text-o
                     |&nbsp;
                     span Создать заявку
-                li.active
-                  a(href='#tab2', data-toggle='tab', aria-expanded='true')
+                li
+                  a(href='#tab2', data-toggle='tab', aria-expanded='false')
                     i.fa.fa-envelope
                     |&nbsp;
                     span Мои заявки
@@ -52,7 +52,7 @@ block content
                     |&nbsp;
                     span Счета компании
               .panel-body.tab-content
-                #tab1.tab-pane
+                #tab1.tab-pane.form-horizontal.active
                   .panel.panel-default
                     .panel-body
                         h3
@@ -73,23 +73,19 @@ block content
                             label
                               input(type='radio', name='financeservice')
                               | Получить кредит/заем на исполнение контракта
-                        .form-group.col-md-6
-                          h4
-                            | Информация о тендере
-                          div.form-inline.notice
-                            label(for='notice') 
-                              span Введите номер извещения с сайта:
-                              a(href="http://zakupki.go.ru") 
-                                |zakupki.go.ru:
-                              br
-                              span (Найти извещение можно
-                              a(href="http://zakupki.go.ru") 
-                                |здесь)
-                            input#notice.form-control(type='text')
+                        .col-md-6
+                          .form-group
+                            label.col-md-3.control-label Информация о тендере
+                            .col-md-9
+                              .input-group
+                                span.input-group-addon
+                                  span.fa.fa-pencil
+                                input#notice.form-control(type='text')
+                              span.help-block This is sample of text field
                         .col-md-12
                           button.btn.btn-primary
                             | Получить
-                #tab2.tab-pane.active
+                #tab2.tab-pane
                   .panel.panel-default
                     .panel-body
                       h3
@@ -100,7 +96,7 @@ block content
                           | Уважаемые пользователи, черновики заявок теперь можно искать и просматривать в форме "Мои заявки"
                         br
                         h4 Фильтр
-                        re-table(v-bind:rows="rows" v-bind:config="config")
+                        re-table(v-bind:rows="myrequestsrows" v-bind:config="myrequestsconfig")
                         .clearfix
                           button.btn.btn-primary
                             | Получить
@@ -108,14 +104,18 @@ block content
                 #tab3.tab-pane
                   .panel.panel-default
                     .panel-body
+                      h3
+                          | Заявки на финансовые услуги тендеров
                       p
-                        | 3Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum dolor sem, quis pharetra dui ultricies vel. Cras non pulvinar tellus, vel bibendum magna. Morbi tellus nulla, cursus non nisi sed, porttitor dignissim erat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis commodo lectus. Vivamus vel tincidunt enim, non vulputate ipsum. Ut pellentesque consectetur arcu sit amet scelerisque. Fusce commodo leo eros, ut eleifend massa congue at.
+                        | Контент
                 #tab4.tab-pane
                   .panel.panel-default
                     .panel-body
-                      p
-                        |4 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum dolor sem, quis pharetra dui ultricies vel. Cras non pulvinar tellus, vel bibendum magna. Morbi tellus nulla, cursus non nisi sed, porttitor dignissim erat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis commodo lectus. Vivamus vel tincidunt enim, non vulputate ipsum. Ut pellentesque consectetur arcu sit amet scelerisque. Fusce commodo leo eros, ut eleifend massa congue at.
-                  
+                      h3
+                          | Договоры
+                      br
+                      .form-group.clearfix
+                        re-table(v-bind:rows="contractsrows" v-bind:config="contractsconfig")               
                 #tab5.tab-pane
                   .panel.panel-default
                     .panel-body
