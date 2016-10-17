@@ -28,13 +28,12 @@ $(document).ready(function() {
                                 '</div>',
                                 '<div class="col-md-6">',
                                     '<div class="form-group">',
-                                        '<label class="col-md-3 control-label">Информация о тендере</label>',
+                                        '<label class="col-md-3 control-label tender-info">Информация о тендере</label>',
                                         '<div class="col-md-9">',
                                             '<div class="input-group">',
                                                 '<span class="input-group-addon"><span class="fa fa-pencil"></span></span>',
                                                 '<input id="notice" type="text" class="form-control"/>',
                                             '</div>',
-                                            '<span class="help-block">This is sample of text field</span>',
                                         '</div>',
                                     '</div>',
                                 '</div>',
@@ -95,12 +94,12 @@ $(document).ready(function() {
 
             return {
                 tabHeaders: [
-                    '<i class="fa fa-file-text-o">&nbsp;<span>Создать заявку</span></i>',
-                    '<i class="fa fa-envelope">&nbsp;<span>Мои заявки</span></i>',
-                    '<i class="fa fa-commenting-o">&nbsp;<span>Запросы документов</span></i>',
-                    '<i class="fa fa-folder">&nbsp;<span>Договоры</span></i>',
-                    '<i class="fa fa-files-o">&nbsp;<span>Полученные кредиты/займы</span></i>',
-                    '<i class="fa fa-list">&nbsp;<span>Счета компании</span></i>',
+                    '<i class="fa fa-file-text-o">&nbsp;</i><span>Создать заявку</span>',
+                    '<i class="fa fa-envelope">&nbsp;</i><span>Мои заявки</span>',
+                    '<i class="fa fa-commenting-o">&nbsp;</i><span>Запросы документов</span>',
+                    '<i class="fa fa-folder">&nbsp;</i><span>Договоры</span>',
+                    '<i class="fa fa-files-o">&nbsp;</i><span>Полученные кредиты/займы</span>',
+                    '<i class="fa fa-list">&nbsp;</i><span>Счета компании</span>',
                 ],
                 drawTable:false,
                 myrequestsrows: [

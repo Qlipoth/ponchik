@@ -42,7 +42,6 @@
     // datatables
     .page-content-wrap,
     .my-tabs-box {
-
         >div {
             height: calc(100vh - 100px);
         }
@@ -122,7 +121,7 @@
         }
     }
     // табы
-    .my-tabs-box >div{
+    .my-tabs-box >div {
         display: flex;
         .nav-tabs {
             margin-bottom: 0;
@@ -164,6 +163,9 @@
             }
         }
         // Создать заявку
+        .tender-info {
+            line-height: 1;
+        }
         .notice {
             label {
                 vertical-align: middle;
