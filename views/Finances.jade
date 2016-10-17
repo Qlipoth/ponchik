@@ -7,9 +7,6 @@ block append head
   if vue
     script(src=vue)
 block content
-  if html
-    .panel
-      .panel-body #{html}
   .page-content.personal
     //- include ./_layouts/parts/preheader
     //- .page-content-header
@@ -19,5 +16,4 @@ block content
       .row
         .col-md-12
           .nav-tabs-vertical
-            .tabs#personalTabs
-             
+            .tabs#finances

@@ -1,0 +1,69 @@
+extends ./_layouts/main.jade
+
+block append head
+  //- +globalVar('tags', tags)
+  //- script(src='/ViewControllers/index.js')
+  //- style.
+  if vue
+    script(src=vue)
+block content
+  if html
+    .panel
+      .panel-body #{html}
+  .page-content.contacts
+    //- include ./_layouts/parts/preheader
+    //- .page-content-header
+    include ./_layouts/parts/navigation
+    include ./_layouts/parts/breadcrumbs     
+    .page-content-wrap.cnt
+      .row
+        .col-md-12
+            .panel-body
+              form#jvalidate.form-horizontal(role='form', action="javascript:alert('Form #validate2 submited');", novalidate='novalidate')
+                .panel.panel-default
+                  .panel-body
+                    h3 Контакты
+                    .form-group
+                      label.col-md-3.control-label Login:
+                      .col-md-9
+                        input.form-control.error(type='text', name='login', aria-required='true', aria-invalid='true')
+                        label#login-error.error(for='login') This field is required.
+                        span.help-block min size = 2, max size = 8
+                    .form-group
+                      label.col-md-3.control-label Password:
+                      .col-md-9
+                        input#password2.form-control(type='password', name='password')
+                        span.help-block min size = 5, max size = 10
+                    .form-group
+                      label.col-md-3.control-label Confirm Password:
+                      .col-md-9
+                        input.form-control(type='password', name='re-password')
+                        span.help-block required same value as Password
+                    .form-group
+                      label.col-md-3.control-label E-mail:
+                      .col-md-9
+                        input.form-control(type='text', value='', name='email')
+                        span.help-block required email
+                    .form-group
+                      label.col-md-3.control-label Age:
+                      .col-md-9
+                        input.form-control(type='text', name='age')
+                        span.help-block min size = 18, max size = 100
+                    .form-group
+                      label.col-md-3.control-label Date of birth:
+                      .col-md-9
+                        input.form-control.datepicker(type='text', name='date')
+                        span.help-block required date
+                    .form-group
+                      label.col-md-3.control-label Credit card:
+                      .col-md-9
+                        input.form-control(type='text', name='credit')
+                        span.help-block required credit card
+                    .form-group
+                      label.col-md-3.control-label Site:
+                      .col-md-9
+                        input.form-control(type='text', value='http://', name='site')
+                        span.help-block required url
+                    .btn-group.pull-right
+                      button.btn.btn-primary(type='button', onclick="jvalidate.resetForm();$('#gender').next('.bootstrap-select').removeClass('error').removeClass('valid')") Hide prompts
+                      button.btn.btn-primary(type='submit') Submit

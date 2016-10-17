@@ -10,7 +10,7 @@ block content
   if html
     .panel
       .panel-body #{html}
-  .page-content.personal
+  .page-content.about
     //- include ./_layouts/parts/preheader
     //- .page-content-header
     include ./_layouts/parts/navigation
@@ -18,6 +18,6 @@ block content
     .page-content-wrap.cnt
       .row
         .col-md-12
-          .nav-tabs-vertical
-            .tabs#personalTabs
-             
+          .panel.panel-default
+            .panel-body
+              h3 О компании
