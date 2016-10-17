@@ -1,28 +1,23 @@
 module.exports.navigation = [
- {
+    {
         name   : 'Получить тендерный заем',
-        href   : '/',
-        canSee : ['ghost'],
+        href   : '/loan',
     },
      {
         name   : 'Разместить финансы',
-        href   : '/locateFinances',
-        canSee : ['ghost'],
+        href   : '/deposites',
     },
     {
         name   : 'Финансовые сервисы',
-        href   : '/financeServices',
-        canSee : ['ghost'],
+        href   : '/services',
+    },
+    {
+        name   : 'Партнеры',
+        href   : '/partners',
     },
     {
         name   : 'О компании',
         href   : '/about',
-        canSee : ['ghost'],
-    },
-    {
-        name   : 'Личный кабинет',
-        href   : '/personal',
-        canSee : ['ghost'],
     },
 
     // {

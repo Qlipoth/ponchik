@@ -7,9 +7,6 @@ block append head
   if vue
     script(src=vue)
 block content
-  if html
-    .panel
-      .panel-body #{html}
   .page-content.personal
     //- include ./_layouts/parts/preheader
     //- .page-content-header
@@ -17,9 +14,12 @@ block content
     include ./_layouts/parts/breadcrumbs     
     .page-content-wrap.cnt
       .row
-      .col-md-12
-        .panel.panel-default
-          .panel-body
-            p
-              | Лэндинг
-    
+        .col-md-12.mt-10
+          .panel.panel-default
+            .panel-body
+              p
+                if html
+                  !{html}
+                else
+                  | Лэндинг
+      

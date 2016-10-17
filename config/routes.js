@@ -7,9 +7,12 @@ module.exports.routes = {
     //
     // Main page
     //
-    'get  /': 'Main',
-    // Личный кабинет
-    'get  /personal': 'Main.personal',
+    'get  /'          : 'Main',
+    'get  /loan'      : 'Main.loan',
+    'get  /deposites' : 'Main.deposites',
+    'get  /services'  : 'Main.services',
+    'get  /partners'  : 'Main.partners',
+    'get  /about'     : 'Main.about',
   
 
     //----------------------------------------------------------------
