@@ -43,7 +43,7 @@
     .page-content-wrap,
     .my-tabs-box {
         >div {
-            height: calc(100vh - 91px);
+            height: calc(100vh - 100px);
         }
     }
     .page-content-wrap {
@@ -188,4 +188,109 @@
             }
         }
     }
+    // Лэндинг
+    .flex-row {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+    }
+    .flex-item {
+        flex: 1;
+    }
+    .landing-title {
+        margin-bottom: 30px;
+    }
+    .l-title {
+            width: 100%;
+            padding: 20px 50px;
+            background: #33414e;
+            text-align: center;
+            color: #fff;
+            margin: 0;
+        }
+    .profit {
+        margin-bottom: 30px;
+        
+        .profit-item {
+            width: 75px;
+            margin: 20px;
+            padding: 30px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            i {
+                color: #fea223;
+            }
+        }
+    }
+    .get-tender-row {
+        .get-tender {
+            text-transform: uppercase;
+            margin-left: 10px;
+            font-size: 1.2em;
+            padding: 10px 15px;
+        }
+    }
+    .radio-flex {
+        display: flex;
+        align-items: baseline;
+        label {
+        	margin-right: 10px;
+        }
+        input {
+        	width: 20px;
+        	height: 20px;
+        }
+        span {
+        	    font-size: 14px;
+			    vertical-align: -3px;
+			    margin-left: 10px;
+        }
+    }
+    .calc {
+    	.input-group-addon {
+    		background: #89ad4d;
+    		border: 1px solid #89ad4d;
+    	}
+    	.consider {
+    		display: flex;
+    		align-items: center;
+    		justify-content: space-between;
+    		div{
+    			flex:1;
+    			h4 {
+    				margin: 0;
+    			}
+    		}
+    	}
+    }
+     .steps {
+     	.h4 {
+     		color: #fff;
+     	}
+     	.step-item {
+            margin: 20px;
+            padding: 30px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            .step {
+            	   display: inline-block;
+            	width: 60px;
+            	padding: 15px;
+            	color: #fff;
+                background: #fea223;
+                border-radius: 50%;
+            }
+            .step-footer {
+            	i,span {
+            		vertical-align: middle;
+            	}
+            	span {
+            		margin-left: 10px;
+            	}
+            }
+
+     	}
+     }
 }
