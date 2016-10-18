@@ -337,8 +337,42 @@ var page_actions = function(){
 
 $(document).ready(function(){
     page_actions();
-
-    // $('body').mCustomScrollbar();
+    var jvalidatecontacts = $("#jvalidatecontacts").validate({
+                ignore: [],
+                rules: {                                            
+                        fio: {
+                                required: true,
+                                minlength: 2,
+                                maxlength: 100
+                        },
+                        
+                        email: {
+                                required: true,
+                                email: true
+                        },
+                        phone: {
+                                required: true,
+                                min: 18,
+                                max: 12
+                        },
+                        inn: {
+                                required: false,
+                                min: 5,
+                                max: 100
+                        },
+                        sum: {
+                                required: true,
+                                min: 0,
+                        },
+                        fz: {
+                                required: true,
+                        },
+                        procedurenumber: {
+                                required: true,
+                        },
+                       
+                    }                                        
+                });
     
     
 });

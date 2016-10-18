@@ -1,9 +1,9 @@
 module.exports = {
     // Главная
     index: function(req, res) {
-        return res.render('Main', _.extend({}, toView, {
+        return res.render('Landing', _.extend({}, toView, {
             title: 'Main',
-            pageTitle: 'Main'
+            pageTitle: 'Main',
         }));
     },
 
