@@ -1,0 +1,24 @@
+extends ./_layouts/main.jade
+
+block append head
+  //- +globalVar('tags', tags)
+  //- script(src='/ViewControllers/index.js')
+  //- style.
+  if vue
+    script(src=vue)
+block content
+  if html
+    .panel
+      .panel-body #{html}
+  .page-content
+    //- include ./_layouts/parts/preheader
+    //- .page-content-header
+    include ./_layouts/parts/navigation
+    include ./_layouts/parts/breadcrumbs     
+    .page-content-wrap.cnt
+      .col-md-12
+        .panel.panel-default
+          .panel-body
+            .container
+              #partners
+             

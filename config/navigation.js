@@ -1,14 +1,10 @@
 module.exports.navigation = [
-    {
-        name   : 'Получить тендерный заем',
-        href   : '/loan',
-    },
      {
         name   : 'Разместить финансы',
-        href   : '/deposites',
+        href   : '/finances',
     },
     {
-        name   : 'Финансовые сервисы',
+        name   : 'Услуги',
         href   : '/services',
     },
     {
@@ -18,6 +14,14 @@ module.exports.navigation = [
     {
         name   : 'О компании',
         href   : '/about',
+    },
+    {
+        name   : 'ЛК получение',
+        href   : '/loan',
+    },
+    {
+        name   : 'ЛК размещение',
+        href   : '/deposites',
     },
 
     // {

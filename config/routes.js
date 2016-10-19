@@ -8,6 +8,7 @@ module.exports.routes = {
     // Main page
     //
     'get  /'          : 'Main',
+    'get  /finances'  : 'Main.finances',
     'get  /loan'      : 'Main.loan',
     'get  /deposites' : 'Main.deposites',
     'get  /services'  : 'Main.services',
@@ -25,7 +26,6 @@ module.exports.routes = {
     // menu top block with avatar
     //
     'get  /me'          : 'Me',
-    'get  /services'    : 'Main.index',
     'get  /me/settings' : 'Me.settings',
     'get  /me/company'  : 'Me.company',
 

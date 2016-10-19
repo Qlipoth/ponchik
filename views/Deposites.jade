@@ -1,0 +1,19 @@
+extends ./_layouts/main.jade
+
+block append head
+  //- +globalVar('tags', tags)
+  //- script(src='/ViewControllers/index.js')
+  //- style.
+  if vue
+    script(src=vue)
+block content
+  .page-content.personal
+    //- include ./_layouts/parts/preheader
+    //- .page-content-header
+    include ./_layouts/parts/navigation
+    include ./_layouts/parts/breadcrumbs     
+    .page-content-wrap.cnt
+      .row
+        .col-md-12
+          .nav-tabs-vertical
+            .tabs#deposites

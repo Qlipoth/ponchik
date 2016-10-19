@@ -10,41 +10,51 @@ module.exports = {
     // получить тендерный заем
     loan: function(req, res) {
         return res.render('Personal', _.extend({}, toView, {
-            title: 'Получить тендерный заем',
-            pageTitle: 'Получить тендерный заем',
+            title: 'ЛК получение',
+            pageTitle: 'ЛК получение',
             bc: [
                 {name: 'Главная', href: '/'},
-                {name: 'Личный кабинет', href: '/personal'},
+                {name: 'ЛК получение', href: '/personal'},
             ],
             vue: '/Vues/personal.js'
         }));
     },
 
-
-
-    deposites: function(req, res) {
-        return res.render('Finances', _.extend({}, toView, {
+    finances: function(req, res) {
+        return res.render('Main', _.extend({}, toView, {
             title: 'Разместить финансы',
             pageTitle: 'Разместить финансы',
+            html: 'Разместить финансы',
+        }));
+    },
+
+    deposites: function(req, res) {
+        return res.render('Deposites', _.extend({}, toView, {
+            title: 'ЛК размещение',
+            pageTitle: 'ЛК размещение',
              bc: [
                 {name: 'Главная', href: '/'},
-                {name: 'Разместить финансы', href: '/personal'},
+                {name: 'ЛК размещение', href: '/personal'},
             ],
-            vue: '/Vues/finances.js'
+            vue: '/Vues/deposites.js'
         }));
     },
     services: function(req, res) {
         return res.render('Main', _.extend({}, toView, {
-            title: 'Финансовые сервисы',
-            pageTitle: 'Финансовые сервисы',
-            html: 'Финансовые сервисы',
+            title: 'Услуги',
+            pageTitle: 'Услуги',
+            html: 'Услуги',
         }));
     },
     partners: function(req, res) {
-        return res.render('Main', _.extend({}, toView, {
+        return res.render('Partners', _.extend({}, toView, {
             title: 'Партнеры',
             pageTitle: 'Партнеры',
-            html: 'Партнеры',
+               bc: [
+                {name: 'Главная', href: '/'},
+                {name: 'Партнеры', href: '/partners'},
+            ],
+            vue: '/Vues/partners.js'
         }));
     },
     about: function(req, res) {

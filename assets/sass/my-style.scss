@@ -324,3 +324,30 @@
 	.carousel-inner .next        { left:  25%; }
 	.carousel-inner .prev		 { left: -25%; }	
 }
+// Партнеры
+.partners-href {
+	color: #434a54 !important;
+	background: #fff;
+	padding: 15px;
+	display: block;
+	margin-bottom: 15px;
+	border: 1px solid #ddd;
+	&:hover {
+		border-color: #999;
+	}
+
+}
+.partners-logo-box {
+	background-color: #fff;
+	padding: 15px;
+	border: 1px solid #ddd;
+}
+.partners-text-box {
+	p, strong {
+		font-size: 16px;
+
+	}
+	p {
+		font-weight: 100;
+	}
+}
