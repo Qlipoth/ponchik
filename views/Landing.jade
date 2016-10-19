@@ -170,7 +170,7 @@ block content
                           i.fa.fa-clock-o.h1
                           span.h5 3 час.
                 hr
-                .request
+                .request.clearfix
                   h2.l-title
                     | Подача заявки
                  
@@ -234,19 +234,45 @@ block content
                           .col-md-3
                           .col-md-9
                             input.submit.btn.btn-success(type="submit" value="Направить заявку")
-                          
-
-                #message-box-success.message-box.message-box-success.animated.fadeIn
-                  .mb-container
-                    .mb-middle
-                      .mb-title
-                        span.fa.fa-check
-                        |  Отправлено
-                      .mb-content
-                        p
-                          | Ваша заявка принята под № 234234234234, наш менеджер свяжется с вами в течение 30 мин.
-                      .mb-footer
-                        button.btn.btn-default.btn-lg.pull-right.mb-control-close Закрыть
+                hr
+                .l-carousel.clearfix
+                  h2.l-title
+                    | Наши партнеры
+                  #myCarousel.carousel.clearfix.slide(data-ride='carousel')          
+                    // Wrapper for slides
+                    .carousel-inner(role='listbox')
+                      .item.active
+                        img(src='img_chania.jpg', alt='Chania')
+                      .item
+                        img(src='img_chania2.jpg', alt='Chania')
+                      .item
+                        img(src='img_flower.jpg', alt='Flower')
+                      .item
+                        img(src='img_flower2.jpg', alt='Flower')
+                    // Left and right controls
+                    a.left.carousel-control(href='#myCarousel', role='button', data-slide='prev')
+                      span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
+                      span.sr-only Previous
+                    a.right.carousel-control(href='#myCarousel', role='button', data-slide='next')
+                      span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
+                      span.sr-only Next       
+                hr
+                .l-footer
+                  p
+                    | Наша компания полностью обеспечивает полный перечень финансовых продуктов на всех этапах закупки. Получить любой, интересующий Вас продукт можно получить дистанционно и онлайн, перейдя по&nbsp; 
+                    a(href="#")
+                      | ссылке  
+                  #message-box-success.message-box.message-box-success.animated.fadeIn
+                    .mb-container
+                      .mb-middle
+                        .mb-title
+                          span.fa.fa-check
+                          |  Отправлено
+                        .mb-content
+                          p
+                            | Ваша заявка принята под № 234234234234, наш менеджер свяжется с вами в течение 30 мин.
+                        .mb-footer
+                          button.btn.btn-default.btn-lg.pull-right.mb-control-close Закрыть
 
     
                     
