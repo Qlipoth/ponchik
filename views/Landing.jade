@@ -238,24 +238,32 @@ block content
                 .l-carousel.clearfix
                   h2.l-title
                     | Наши партнеры
-                  #myCarousel.carousel.clearfix.slide(data-ride='carousel')          
-                    // Wrapper for slides
-                    .carousel-inner(role='listbox')
+                  #myCarousel.carousel.slide(data-ride='carousel', data-type='multi', data-interval='3000')
+                    .carousel-inner
                       .item.active
-                        img(src='img_chania.jpg', alt='Chania')
+                        .col-md-3.col-sm-6.col-xs-12
+                          a(href='#')
+                            img.img-responsive(src="img/1.jpg")
                       .item
-                        img(src='img_chania2.jpg', alt='Chania')
+                        .col-md-3.col-sm-6.col-xs-12
+                          a(href='#')
+                            img.img-responsive(src="img/2.jpg")
                       .item
-                        img(src='img_flower.jpg', alt='Flower')
+                        .col-md-3.col-sm-6.col-xs-12
+                          a(href='#')
+                            img.img-responsive(src="img/3.jpg")
                       .item
-                        img(src='img_flower2.jpg', alt='Flower')
-                    // Left and right controls
-                    a.left.carousel-control(href='#myCarousel', role='button', data-slide='prev')
-                      span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
-                      span.sr-only Previous
-                    a.right.carousel-control(href='#myCarousel', role='button', data-slide='next')
-                      span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
-                      span.sr-only Next       
+                        .col-md-3.col-sm-6.col-xs-12
+                          a(href='#')
+                            img.img-responsive(src="img/4.jpg")
+                      .item
+                        .col-md-3.col-sm-6.col-xs-12
+                          a(href='#')
+                            img.img-responsive(src="img/5.jpg")
+                    a.left.carousel-control(href='#myCarousel', data-slide='prev')
+                      i.glyphicon.glyphicon-chevron-left
+                    a.right.carousel-control(href='#myCarousel', data-slide='next')
+                      i.glyphicon.glyphicon-chevron-right      
                 hr
                 .l-footer
                   p
