@@ -174,7 +174,7 @@ block content
                   h2.l-title
                     | Подача заявки
                  
-                  form#jvalidatecontacts.form-horizontal(role='form', action="javascript:alert('Form #validate2 submited');")
+                  form#jvalidatecontacts.form-horizontal(role='form', method="post")
                     .col-md-12
                       .panel-body
                         .form-group
@@ -194,7 +194,7 @@ block content
                         .form-group
                           label.col-md-3.control-label Телефон *:
                           .col-md-9
-                            input.form-control(type='тел', value='', name='phone')
+                            input.form-control(type='tel', value='', name='phone')
                             strong.help-block Обязательное поле
                         .form-group
                           label.col-md-3.control-label ИНН:
@@ -226,20 +226,22 @@ block content
                         .form-group
                           label.col-md-3.control-label N процедуры на zakupki.gov.ru *:
                           .col-md-9
-                            input.form-control(type='email', value='', name='procedurenumber')
+                            input.form-control(type='text', value='', name='procedurenumber')
                             strong.help-block
                                 | Искать на &nbsp;
                                 a(href="http://zakupki.gov.ru") zakupki.gov.ru
                         .form-group
                           .col-md-3
                           .col-md-9
-                            button.btn.btn-success.mb-control(type='submit') Направить заявку
+                            input.submit.btn.btn-success(type="submit" value="Направить заявку")
+                          
+
                 #message-box-success.message-box.message-box-success.animated.fadeIn
                   .mb-container
                     .mb-middle
                       .mb-title
                         span.fa.fa-check
-                        |  Success
+                        |  Отправлено
                       .mb-content
                         p
                           | Ваша заявка принята под № 234234234234, наш менеджер свяжется с вами в течение 30 мин.
