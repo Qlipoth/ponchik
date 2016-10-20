@@ -335,63 +335,66 @@ var page_actions = function() {
 $(document).ready(function() {
     page_actions();
     // Валидация формы для лэндинга
-    $("#jvalidatecontacts").validate({
-        ignore: [],
-        rules: {
-            fio: {
-                required: true,
-                minlength: 2,
-                maxlength: 100
-            },
+    try {
+        $("#jvalidatecontacts").validate({
+            ignore: [],
+            rules: {
+                fio: {
+                    required: true,
+                    minlength: 2,
+                    maxlength: 100
+                },
 
-            email: {
-                required: true,
-                email: true
-            },
-            phone: {
-                required: true,
-                min: 10,
+                email: {
+                    required: true,
+                    email: true
+                },
+                phone: {
+                    required: true,
+                    min: 10,
 
+                },
+                inn: {
+                    required: false,
+                },
+                sum: {
+                    required: true,
+                    min: 0,
+                },
+                fz: {
+                    required: true,
+                },
+                procedurenumber: {
+                    required: true,
+                    min: 0,
+                },
             },
-            inn: {
-                required: false,
+            invalidHandler: function(event, validator) {
+                // 'this' refers to the form
+                var errors = validator.numberOfInvalids();
+                if (errors) {
+                    var message = errors == 1 ? 'You missed 1 field. It has been highlighted' : 'You missed ' + errors + ' fields. They have been highlighted';
+                    $("div.error span").html(message);
+                    $("div.error").show();
+                } else {
+                    $("div.error").hide();
+                }
             },
-            sum: {
-                required: true,
-                min: 0,
-            },
-            fz: {
-                required: true,
-            },
-            procedurenumber: {
-                required: true,
-                min: 0,
-            },
-        },
-        invalidHandler: function(event, validator) {
-            // 'this' refers to the form
-            var errors = validator.numberOfInvalids();
-            if (errors) {
-                var message = errors == 1 ? 'You missed 1 field. It has been highlighted' : 'You missed ' + errors + ' fields. They have been highlighted';
-                $("div.error span").html(message);
-                $("div.error").show();
-            } else {
-                $("div.error").hide();
+            submitHandler: function(form) {
+                $.post("http://google.com", function() {
+                        alert("success");
+                    })
+                    .done(function() {
+                        $('#message-box-success').show()
+                    })
+                    .fail(function() {
+                        $('#message-box-success').show()
+                    })
+
             }
-        },
-        submitHandler: function(form) {
-            $.post("http://google.com", function() {
-                    alert("success");
-                })
-                .done(function() {
-                    $('#message-box-success').show()
-                })
-                .fail(function() {
-                    $('#message-box-success').show()
-                })
-
-        }
-    });
+        });
+    }
+    catch (err) {};
     // карусель
     $('.carousel[data-type="multi"] .item').each(function() {
         var next = $(this).next();
