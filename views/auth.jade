@@ -14,34 +14,47 @@ block body
       .login-logo
       .login-body
         .login-title
-          strong Welcome
-          | , Please login
+          strong Здравствуйте
+          | , пожалуйста авторизуйтесь
 
         for error in req.flash('error')
           +error(error)
+        .panel.panel-default.tabs.auth-tabs
+          ul.nav.nav-tabs.nav-justified
+            li.active
+              a(href='#bylogin', data-toggle='tab', aria-expanded='true') логин и пароль
+            li
+              a(href='#bycert', data-toggle='tab', aria-expanded='false') сертификат ЭП
+          .panel-body.tab-content
+            #bylogin.tab-pane.active
+              form.form-horizontal(action='/doLogin', method='post')
+                .form-group
+                  .col-md-12
+                    input.form-control(
+                      type='text',
+                      name='login',
+                      value=form.login,
+                      placeholder='Login',
+                      )
+                .form-group
+                  .col-md-12
+                    input.form-control(
+                      type='password',
+                      name='password',
+                      value=form.password,
+                      placeholder='Password'
+                      )
+                .form-group
+                  .col-md-6
+                    a.btn.btn-link.btn-block(href='/register') Need an account?
+                  .col-md-6
+                    button.btn.btn-info.btn-block Войти
+            #bycert.tab-pane
+              form.form-horizontal(action='/loginByCert', method='post')
+                .form-group
+                  .col-md-12
+                    button.btn.btn-info.btn-block Войти
 
-        form.form-horizontal(action='/doLogin', method='post')
-          .form-group
-            .col-md-12
-              input.form-control(
-                type='text',
-                name='login',
-                value=form.login,
-                placeholder='Login',
-                )
-          .form-group
-            .col-md-12
-              input.form-control(
-                type='password',
-                name='password',
-                value=form.password,
-                placeholder='Password'
-                )
-          .form-group
-            .col-md-6
-              a.btn.btn-link.btn-block(href='/register') Need an account?
-            .col-md-6
-              button.btn.btn-info.btn-block Log In
       .login-footer
         .pull-left
           | © 2015 AppName

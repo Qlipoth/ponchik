@@ -322,7 +322,7 @@
 @media (min-width: 992px ) {
 	.carousel-inner .active.left { left: -25%; }
 	.carousel-inner .next        { left:  25%; }
-	.carousel-inner .prev		 { left: -25%; }	
+	.carousel-inner .prev		 { left: -25%; }
 }
 // Партнеры
 .partners-href {
@@ -350,4 +350,44 @@
 	p {
 		font-weight: 100;
 	}
+}
+// авторизация
+.login-container {
+    .login-box {
+        width: 450px;
+        .login-body {
+            .auth-tabs {
+                margin-top: 0;
+                border-top: none;
+                border-radius: 0;
+                background: #444e59;
+                .nav {
+                    // background: #33414e;
+                    border: none;
+                    margin: 0;
+                    padding: 0;
+                    border: 1px solid #33414e;
+                    li {
+                        a {
+                            background: transparent;
+                            color: #fff;
+                            border: none;
+                            border-radius: 0;
+                        }
+
+                    }
+                    li.active {
+                        a {
+                           background: #33414e;
+                        }
+
+                    }
+                }
+                .tab-content {
+                    padding-left: 0;
+                    padding-right: 0;
+                }
+            }
+        }
+    }
 }
