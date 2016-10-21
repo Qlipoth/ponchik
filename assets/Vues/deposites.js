@@ -8,16 +8,12 @@ $(document).ready(function() {
                         '<h3>Запросы на инвестирование</h3><br/>',
                         '<div class="form-group clearfix form-horizontal">',
                             '<re-table v-bind:rows="investmentrows" v-bind:config="investmentconfig"></re-table>',
-                            '<div class="form-group clearfix">',
-                                '<label class="col-md-2 control-label">Предложить свой займ</label>',
-                                '<div class="col-md-1">',
-                                    '<div class="input-group">',
-                                        '<input placeholder="%" type="number" min="0" class="form-control"/>',
-                                    '</div>',
-                                '</div>',
-                                '<div class="col-md-2">',
-                                    '<button class="btn btn-primary">Инвестировать</button>',
-                                '</div>',
+                            '<div id="reqi" class="form-group clearfix">',
+                                '<label class="control-label reqi-control">Сумма</label>',
+                                '<input placeholder="%" type="number" min="0" class="form-control reqi-control"/>',
+                                '<label class="control-label reqi-control">Процент</label>',
+                                '<input placeholder="%" type="number" min="0" class="form-control reqi-control"/>',
+                                '<button class="btn btn-primary reqi-control">Предложить</button>',
                             '</div>',
                         '</div>',
                     '</tab>',
@@ -132,6 +128,12 @@ $(document).ready(function() {
                 investmentconfig: {
                     columns: [
                         {
+                            data: 'id',
+                            render: function() {
+                                return '<input type="radio" name="selectrow"/>';
+                            }
+                        },
+                        {
                             title: '№',
                             data: 'id',
                         },
@@ -164,23 +166,23 @@ $(document).ready(function() {
                             render: function(value) {
                                 return value+' руб.';
                             },
-                        }, 
+                        },
                         {
                             title: 'Предложения',
                             data: 'tender',
-                        },     
+                        },
                         {
                             title: 'Период',
-                            data: 'period', 
+                            data: 'period',
                         },
                         {
                             title: 'Процент за займ',
-                            data: 'percent', 
-                        },  
+                            data: 'percent',
+                        },
                         {
                             title: 'Фин. статус',
                             data: 'financeStatus',
-                        },   
+                        },
                     ],
                 },
                 contractsrows: [
@@ -380,7 +382,7 @@ $(document).ready(function() {
                             data: 'creditLimit',
                         },
                     ]
-                    
+
                 }
             }
         },

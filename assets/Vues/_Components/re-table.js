@@ -226,7 +226,17 @@ Vue.component('re-table', Vue.extend({
         function next(rows) {
             var conf = _.extend(vm.config, {
                 data: rows,
-                language: {
+                columnDefs: [ {
+                    orderable: false,
+                    className: 'select-checkbox',
+                    targets:   0
+                } ],
+                select: {
+                    style:    'os',
+                    selector: 'td:first-child'
+                },
+
+                    language: {
                     search: "Поиск:",
                     paginate: {
                         first:      "Первая",
@@ -241,62 +251,62 @@ Vue.component('re-table', Vue.extend({
                 }
             });
 
-            if (vm.checked) {
-                // у таблицы есть колонка с чекбоксами
-                conf.columns.unshift({
-                    data: null,
-                    title: [
-                        '<re-check',
-                            'data="all"',
-                            '@check="setChecked"',
-                            '@uncheck="setUnchecked"',
-                            '>',
-                        '</re-check>',
-                    ].join(' '),
-                    className: 'ta-c',
-                    sortable: false,
-                    render: function (data, type, row, meta) {
-                        return [
-                            '<re-check',
-                                'data='+meta.row,
-                                '@check="setChecked"',
-                                '@uncheck="setUnchecked"',
-                                '>',
-                            '</re-check>',
-                        ].join(' ');
-                    },
-                });
+            // if (vm.checked) {
+            //     // у таблицы есть колонка с чекбоксами
+            //     conf.columns.unshift({
+            //         data: null,
+            //         title: [
+            //             '<re-check',
+            //                 'data="all"',
+            //                 '@check="setChecked"',
+            //                 '@uncheck="setUnchecked"',
+            //                 '>',
+            //             '</re-check>',
+            //         ].join(' '),
+            //         className: 'ta-c',
+            //         sortable: false,
+            //         render: function (data, type, row, meta) {
+            //             return [
+            //                 '<re-check',
+            //                     'data='+meta.row,
+            //                     '@check="setChecked"',
+            //                     '@uncheck="setUnchecked"',
+            //                     '>',
+            //                 '</re-check>',
+            //             ].join(' ');
+            //         },
+            //     });
 
-                /**
-                 * После рендера строки с вью-компонентом
-                 * нужно создать на ней вью-инстанс (onDraw)
-                 *
-                 */
-                _.extend(vm.config, {
-                    rowCallback: function(row) {
-                        vm.onDraw(row);
-                    },
-                    headerCallback: function(row) {
-                        vm.onDraw(row);
-                    },
+            //     *
+            //      * После рендера строки с вью-компонентом
+            //      * нужно создать на ней вью-инстанс (onDraw)
+            //      *
 
-                    //
-                    // // могуть быть проблемы при "дефер рендер"
-                    //
-                    // drawCallback: function() {
-                    //     console.log('drawCallback');
-                    //     vm.onDraw(this[0]);
-                    // },
+            //     _.extend(vm.config, {
+            //         rowCallback: function(row) {
+            //             vm.onDraw(row);
+            //         },
+            //         headerCallback: function(row) {
+            //             vm.onDraw(row);
+            //         },
 
-                    //
-                    // // могут быть проблемы с $nextTick
-                    //
-                    // createdRow: function(row) {
-                    //     console.log('createdRow');
-                    //     // vm.onDraw(row)
-                    // },
-                });
-            }
+            //         //
+            //         // // могуть быть проблемы при "дефер рендер"
+            //         //
+            //         // drawCallback: function() {
+            //         //     console.log('drawCallback');
+            //         //     vm.onDraw(this[0]);
+            //         // },
+
+            //         //
+            //         // // могут быть проблемы с $nextTick
+            //         //
+            //         // createdRow: function(row) {
+            //         //     console.log('createdRow');
+            //         //     // vm.onDraw(row)
+            //         // },
+            //     });
+            // }
 
 
             if (conf.actions && conf.actions.length) {
