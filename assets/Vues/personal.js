@@ -34,6 +34,7 @@ $(document).ready(function() {
                                                 '<span class="input-group-addon"><span class="fa fa-pencil"></span></span>',
                                                 '<input id="notice" type="text" class="form-control"/>',
                                             '</div>',
+                                            '<strong class="help-block">Искать на &nbsp;<a href="http://zakupki.gov.ru">zakupki.gov.ru</a></strong>',
                                         '</div>',
                                     '</div>',
                                 '</div>',
@@ -385,7 +386,7 @@ $(document).ready(function() {
                             data: 'creditLimit',
                         },
                     ]
-                    
+
                 }
             }
         },
