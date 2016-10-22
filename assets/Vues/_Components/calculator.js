@@ -57,15 +57,18 @@ Vue.component('calculator', Vue.extend({
 		methods: {
 			calculate: function() {
 				var vm = this;
-	  		var loanAmount = vm.loanAmount;
-	  		var loanTerm = vm.loanTerm;
+	  		var loanAmount = parseInt(vm.loanAmount);
+	  		var loanTerm = parseInt(vm.loanTerm);
 	  		var sum;
+	  		var percent;
 
 	  		if (vm.program == 1) {
-	    		sum = (parseInt(loanAmount) + (loanAmount / loanTerm) * 16);
+	  			percent = 16 / 365 * loanTerm;
+	    		sum = loanAmount + (loanAmount / 100 * percent);
 	    	}
 	    	else {
-	      	sum = (parseInt(loanAmount) + (loanAmount / loanTerm) * 25);
+	    		percent = 25 / 365 * loanTerm;
+	      	sum = loanAmount + (loanAmount / 100 * percent);
 	    	}
 	    	vm.total = !isNaN(parseFloat(sum)) && isFinite(sum)? sum.toFixed(2) : null;
 			}
