@@ -4,6 +4,7 @@ module.exports = {
         return res.render('Landing', _.extend({}, toView, {
             title: 'Main',
             pageTitle: 'Main',
+            vue: '/Vues/landing.js'
         }));
     },
 
