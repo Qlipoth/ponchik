@@ -19,7 +19,9 @@ Vue.component('documents', Vue.extend({
                     '<form action="#" class="dropzone dropzone-mini"></form>',
                 '</div>',
                 '<div class="col-md-12">',
-                    '<button class="btn btn-primary">Сохранить</button>',
+                    '<div class="btn btn-primary btn-file"> ',
+                    '<i class="glyphicon glyphicon-folder-open"></i> &nbsp;Добавить документ',
+                    '<input @change="onFileChange" type="file" id="doc"></div>',
                 '</div>',
             '</div>',
         '</div>',
@@ -33,10 +35,17 @@ Vue.component('documents', Vue.extend({
     methods: {
         removeDoc: function(doc) {
             this.docs.$remove(doc)
-        }
+        },
+        onFileChange: function(e) {
+          var files = e.target.files || e.dataTransfer.files;
+          console.log(files)
+          if (!files.length)
+            return;
+        },
     },
     data: function() {
         return {
+            doc: null,
             docs: [
                 {
                     iconCls: 'fa fa-file-text-o',
