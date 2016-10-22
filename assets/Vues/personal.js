@@ -194,6 +194,9 @@ $(document).ready(function() {
         data: function() {
 
             return {
+                card: null,
+                showAcception: false,
+                investmentDialog: false,
                 tabHeaders: [
                     '<i class="fa fa-file-text-o">&nbsp;</i><span>Создать заявку</span>',
                     '<i class="fa fa-envelope">&nbsp;</i><span>Мои заявки</span>',
