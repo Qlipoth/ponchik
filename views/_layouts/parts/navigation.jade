@@ -5,12 +5,14 @@ div.nav-box.clearfix
       li.xn-logo
         include ./logo
         +Navigation(sails.config.navigation)
-    ul.nav.navbar-nav.navbar-right.my-nav
-      li.h5
-        a(href='/register')
-          span.glyphicon.glyphicon-user
-          |  Регистрация
-      li.h5
+      //- li.pull-right
+        //- ul.nav.navbar-nav.navbar-right.my-nav
+      li.h5.pull-right
         a(href='/auth')
           span.glyphicon.glyphicon-log-in
           |  Войти
+      li.h5.pull-right
+        a(href='/register')
+          span.glyphicon.glyphicon-user
+          |  Регистрация
+      
