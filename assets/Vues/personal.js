@@ -248,8 +248,14 @@ $(document).ready(function() {
                     {
                         id: 123123123,
                         info: 'Инфо1',
-                        deliveryDate: new Date(),
-                        returnDate: new Date(),
+                        deliveryDate: {
+                            plan: new Date(),
+                            fact: moment().add(1, 'd'),
+                        },
+                        returnDate: {
+                            plan: new Date(),
+                            fact: moment().add(3, 'd'),
+                        },
                         contractDate: new Date(),
                         sum: 2500,
                         status: 'Статус',
@@ -261,8 +267,14 @@ $(document).ready(function() {
                     {
                         id: 24234234,
                         info: 'Инфо1',
-                        deliveryDate: new Date(),
-                        returnDate: new Date(),
+                         deliveryDate: {
+                            plan: new Date(),
+                            fact: moment().add(2, 'd'),
+                        },
+                        returnDate: {
+                            plan: new Date(),
+                            fact: moment().add(1, 'd'),
+                        },
                         contractDate: new Date(),
                         sum: 4500,
                         status: 'Статус2',
@@ -287,7 +299,9 @@ $(document).ready(function() {
                             title: 'Дата выдачи<br>Плановая/Фактическая',
                             data: 'deliveryDate',
                             render: function(value) {
-                                return moment(value).format('MM.DD.YYYY, HH:mm:ss');
+                                var planDate = moment(value.plan).format('MM.DD.YYYY H:mm');
+                                var factDate = moment(value.fact).format('MM.DD.YYYY H:mm');
+                                return '<span>'+planDate+'</span>'+'<br>'+'<span>'+factDate+'</span>';
                             },
                         },
                         {
@@ -295,7 +309,9 @@ $(document).ready(function() {
                             title: 'Дата возврата<br>Плановая/Фактическая',
                             data: 'returnDate',
                             render: function(value) {
-                                return moment(value).format('MM.DD.YYYY, HH:mm:ss');
+                                var planDate = moment(value.plan).format('MM.DD.YYYY H:mm');
+                                var factDate = moment(value.fact).format('MM.DD.YYYY H:mm');
+                                return '<span>'+planDate+'</span>'+'<br>'+'<span>'+factDate+'</span>';
                             },
                         },
                         {
