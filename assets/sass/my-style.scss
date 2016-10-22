@@ -76,7 +76,6 @@
         .xn-logo {
             border-bottom: none;
             a {
-                width: 300px;
                 background-size: contain;
             }
         }
@@ -202,16 +201,15 @@
         margin-bottom: 30px;
     }
     .l-title {
-            width: 100%;
-            padding: 20px 50px;
-            background: #33414e;
-            text-align: center;
-            color: #fff;
-            margin: 0;
-        }
+        width: 100%;
+        padding: 20px 50px;
+        background: #33414e;
+        text-align: center;
+        color: #fff;
+        margin: 0;
+    }
     .profit {
         margin-bottom: 30px;
-
         .profit-item {
             width: 75px;
             margin: 20px;
@@ -236,63 +234,63 @@
         display: flex;
         align-items: baseline;
         label {
-        	margin-right: 10px;
+            margin-right: 10px;
         }
         input {
-        	width: 20px;
-        	height: 20px;
+            width: 20px;
+            height: 20px;
         }
         span {
-        	    font-size: 14px;
-			    vertical-align: -3px;
-			    margin-left: 10px;
+            font-size: 14px;
+            vertical-align: -3px;
+            margin-left: 10px;
         }
     }
     .calc {
-    	.input-group-addon {
-    		background: #89ad4d;
-    		border: 1px solid #89ad4d;
-    	}
-    	.consider {
-    		display: flex;
-    		align-items: center;
-    		justify-content: space-between;
-    		div{
-    			flex:1;
-    			h4 {
-    				margin: 0;
-    			}
-    		}
-    	}
+        .input-group-addon {
+            background: #89ad4d;
+            border: 1px solid #89ad4d;
+        }
+        .consider {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            div {
+                flex: 1;
+                h4 {
+                    margin: 0;
+                }
+            }
+        }
     }
     .steps {
-     	.h4 {
-     		color: #fff;
-     	}
-     	.step-item {
+        .h4 {
+            color: #fff;
+        }
+        .step-item {
             margin: 20px;
             padding: 30px;
             text-align: center;
             border: 1px solid #ddd;
             border-radius: 3px;
             .step {
-            	   display: inline-block;
-            	width: 60px;
-            	padding: 15px;
-            	color: #fff;
+                display: inline-block;
+                width: 60px;
+                padding: 15px;
+                color: #fff;
                 background: #fea223;
                 border-radius: 50%;
             }
             .step-footer {
-            	i,span {
-            		vertical-align: middle;
-            	}
-            	span {
-            		margin-left: 10px;
-            	}
+                i,
+                span {
+                    vertical-align: middle;
+                }
+                span {
+                    margin-left: 10px;
+                }
             }
-
-     	}
+        }
     }
     .l-footer {
         p {
@@ -302,56 +300,113 @@
         }
     }
 }
-// карусель
-.carousel-control 			 { width:  4%; }
-@media (max-width: 767px) {
-	.carousel-inner .active.left { left: -100%; }
-	.carousel-inner .next        { left:  100%; }
-	.carousel-inner .prev		 { left: -100%; }
-	.active > div { display:none; }
-	.active > div:first-child { display:block; }
 
+// карусель
+.carousel-control {
+    width: 4%;
 }
-@media (min-width: 767px) and (max-width: 992px ) {
-	.carousel-inner .active.left { left: -50%; }
-	.carousel-inner .next        { left:  50%; }
-	.carousel-inner .prev		 { left: -50%; }
-	.active > div { display:none; }
-	.active > div:first-child { display:block; }
-	.active > div:first-child + div { display:block; }
+
+@media (max-width: 767px) {
+    .carousel-inner .active.left {
+        left: -100%;
+    }
+    .carousel-inner .next {
+        left: 100%;
+    }
+    .carousel-inner .prev {
+        left: -100%;
+    }
+    .active > div {
+        display: none;
+    }
+    .active > div:first-child {
+        display: block;
+    }
 }
-@media (min-width: 992px ) {
-	.carousel-inner .active.left { left: -25%; }
-	.carousel-inner .next        { left:  25%; }
-	.carousel-inner .prev		 { left: -25%; }
+
+@media (min-width: 767px) and (max-width: 992px) {
+    .carousel-inner .active.left {
+        left: -50%;
+    }
+    .carousel-inner .next {
+        left: 50%;
+    }
+    .carousel-inner .prev {
+        left: -50%;
+    }
+    .active > div {
+        display: none;
+    }
+    .active > div:first-child {
+        display: block;
+    }
+    .active > div:first-child + div {
+        display: block;
+    }
 }
+
+@media (min-width: 992px) {
+    .carousel-inner .active.left {
+        left: -25%;
+    }
+    .carousel-inner .next {
+        left: 25%;
+    }
+    .carousel-inner .prev {
+        left: -25%;
+    }
+}
+
+@media (min-width: 1025px) {
+    #body {
+        .xn-logo {
+            a {
+                width: 300px;
+            }
+        }
+    }
+}
+
+@media (max-width: 1280px) {
+    #body {
+        .page-content {
+            padding-top: 0;
+        }
+        .my-nav {
+            position: static;
+        }
+    }
+}
+
 // Партнеры
 .partners-href {
-	color: #434a54 !important;
-	background: #fff;
-	padding: 15px;
-	display: block;
-	margin-bottom: 15px;
-	border: 1px solid #ddd;
-	&:hover {
-		border-color: #999;
-	}
-
+    color: #434a54 !important;
+    background: #fff;
+    padding: 15px;
+    display: block;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    &:hover {
+        border-color: #999;
+    }
 }
+
 .partners-logo-box {
-	background-color: #fff;
-	padding: 15px;
-	border: 1px solid #ddd;
+    background-color: #fff;
+    padding: 15px;
+    border: 1px solid #ddd;
 }
-.partners-text-box {
-	p, strong {
-		font-size: 16px;
 
-	}
-	p {
-		font-weight: 100;
-	}
+.partners-text-box {
+    p,
+    strong {
+        font-size: 16px;
+    }
+    p {
+        font-weight: 100;
+    }
 }
+
 // авторизация
 .login-container {
     .login-box {
@@ -375,13 +430,11 @@
                             border: none;
                             border-radius: 0;
                         }
-
                     }
                     li.active {
                         a {
-                           background: #33414e;
+                            background: #33414e;
                         }
-
                     }
                 }
                 .tab-content {
@@ -392,6 +445,7 @@
         }
     }
 }
+
 //  ЛК
 //  запросы на инвестирование
 #reqi {
@@ -399,21 +453,22 @@
     align-items: center;
     width: 100%;
     input.reqi-control {
-    	width: 80px;
+        width: 80px;
     }
     .reqi-control {
-    	width: auto;
-       margin-right: 15px;
+        width: auto;
+        margin-right: 15px;
     }
-
 }
+
 //  datatables
 .select-checkbox {
-	&:after {
-		display: none;
-		content: '' !important;
-	}
+    &:after {
+        display: none;
+        content: '' !important;
+    }
 }
+
 .re-white-popup {
-	    max-width: 300px;
+    max-width: 300px;
 }
