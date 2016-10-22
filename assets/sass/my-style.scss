@@ -124,6 +124,16 @@
     .my-tabs-box >div {
         display: flex;
         .nav-tabs {
+        	li.disabled {
+	        	margin-bottom: 10px;
+	        	a {
+	        		&:hover {
+	                    background: transparent;
+	                    color: #fff;
+	                    cursor: default;
+	                }
+	        	}
+	        }
             margin-bottom: 0;
             margin-left: -10px;
             margin-top: -40px;

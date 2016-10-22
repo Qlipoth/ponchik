@@ -11,11 +11,11 @@ module.exports = {
     // получить тендерный заем
     loan: function(req, res) {
         return res.render('Personal', _.extend({}, toView, {
-            title: 'ЛК получение',
-            pageTitle: 'ЛК получение',
+            title: 'Л/К',
+            pageTitle: 'Л/К',
             bc: [
                 {name: 'Главная', href: '/'},
-                {name: 'ЛК получение', href: '/personal'},
+                {name: 'Л/К', href: '/personal'},
             ],
             vue: '/Vues/personal.js'
         }));
@@ -25,7 +25,11 @@ module.exports = {
         return res.render('Main', _.extend({}, toView, {
             title: 'Разместить финансы',
             pageTitle: 'Разместить финансы',
-            html: 'Разместить финансы',
+             bc: [
+                {name: 'Главная', href: '/'},
+                {name: 'Разместить финансы', href: '/finances'},
+            ],
+            vue: '/Vues/finances.js'
         }));
     },
 

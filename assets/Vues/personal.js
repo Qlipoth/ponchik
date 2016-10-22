@@ -3,7 +3,8 @@ $(document).ready(function() {
         el: '#personalTabs',
         template: [
             '<div class="my-tabs-box">',
-                '<tabs :class="my-tabs">',
+                '<tabs :class="my-tabs" :active="1">',
+                    '<tab header="Получение" disabled></tab>',       
                     '<tab :header="tabHeaders[0]">',
                         '<h3>Публикация заявки</h3><br/>',
                         '<div class="panel panel-default">',
@@ -79,7 +80,109 @@ $(document).ready(function() {
                             '<re-table v-bind:rows="creditaccountrows" v-bind:config="creditaccountconfig"></re-table>',
                         '</div>',
                     '</tab>',
+                    '<tab header="Размещение" disabled></tab>', 
+                    '<tab :header="tabHeaders[6]">',
+                        '<h3>Запросы на инвестирование</h3><br/>',
+                        '<div class="form-group clearfix form-horizontal table-with-radio">',
+                            '<re-table @onrowclick="getRowData" v-bind:rows="investmentrows" v-bind:config="investmentconfig"></re-table>',
+                            '<div role="form" id="reqi" class="form-group clearfix">',
+                                '<label class="control-label reqi-control">Сумма</label>',
+                                '<input type="number" min="0" class="form-control reqi-control"/>',
+                                '<label class="control-label reqi-control">Процент</label>',
+                                '<input id="invper"  type="number" class="form-control reqi-control" value=""/>',
+                                '<button @click="showAcception = true" class="btn btn-primary reqi-control">Предложить</button>',
+                            '</div>',
+                        '</div>',
+                    '</tab>',
+                    '<tab :header="tabHeaders[7]">',
+                        '<h3>Выданные кредиты/займы</h3><br/>',
+                        '<div class="form-group clearfix">',
+                            '<re-table v-bind:rows="investmentrows" v-bind:config="financeconfig"></re-table>',
+                        '</div>',
+                    '</tab>',
+                    '<tab :header="tabHeaders[8]">',
+                        '<h3>Способы инвестирования</h3><br/>',
+                        '<div class="panel panel-default">',
+                            '<div class="panel-body">',
+                                '<div class="form-group clearfix">',
+                                    '<div class="radio">',
+                                        '<label>',
+                                            '<input type="radio" name="modeInvestment"/>Инвестировать с банковской карты',
+                                        '</label>',
+                                    '</div>',
+                                    '<div class="radio">',
+                                        '<label>',
+                                            '<input type="radio" name="modeInvestment"/>Инвестировать с расчетного счета',
+                                        '</label>',
+                                    '</div>',
+                                '</div>',
+                                '<h4 class="col-md-offset-2">Реквизиты</h4>',
+                                '<div class="form-group clearfix form-horizontal">',
+                                    '<div class="form-group clearfix form-horizontal">',
+                                        '<label class="col-md-2 control-label">Наименование банка</label>',
+                                        '<div class="col-md-7">',
+                                            '<div class="input-group">',
+                                                '<span class="input-group-addon"><span class="fa fa-pencil"></span></span>',
+                                                '<input type="text" class="form-control"/>',
+                                            '</div>',
+                                        '</div>',
+                                    '</div>',
+                                    '<label class="col-md-2 control-label">БИК</label>',
+                                    '<div class="col-md-7">',
+                                        '<div class="input-group">',
+                                            '<span class="input-group-addon"><span class="fa fa-pencil"></span></span>',
+                                            '<input type="text" class="form-control"/>',
+                                        '</div>',
+                                    '</div>',
+                                '</div>',
+                                 '<div class="form-group clearfix form-horizontal">',
+                                    '<label class="col-md-2 control-label">КС</label>',
+                                    '<div class="col-md-7">',
+                                        '<div class="input-group">',
+                                            '<span class="input-group-addon"><span class="fa fa-pencil"></span></span>',
+                                            '<input type="text" class="form-control"/>',
+                                        '</div>',
+                                    '</div>',
+                                '</div>',
+                                '<div class="form-group clearfix form-horizontal">',
+                                    '<label class="col-md-2 control-label">Раcсчетный счет</label>',
+                                    '<div class="col-md-7">',
+                                        '<div class="input-group">',
+                                            '<span class="input-group-addon"><span class="fa fa-pencil"></span></span>',
+                                            '<input type="text" class="form-control"/>',
+                                        '</div>',
+                                    '</div>',
+                                '</div>',                                
+                                '<div class="col-md-2 col-md-offset-2">',
+                                    '<button class="btn btn-primary">Сохранить</button>',
+                                '</div>',
+                            '</div>',
+                        '</div>',
+                    '</tab>',
                 '</tabs>',
+                '<re-modal :showfooter="true" ',
+                    ':item.sync="showAcception"', 
+                    'title="Требуется подтверждение"', 
+                    '@save="showInvestmentDialog"',
+                    'ok-text="Ок"',
+                    'cancel-text="Отмена">',
+                        '<h3 class="text-center">Вы действительно хотите это сделать?</h3>',
+                '</re-modal>',
+                '<re-modal :showfooter="true" ',
+                    ':item.sync="investmentDialog"', 
+                    'title="Номер карты"', 
+                    'ok-text="Ок"',
+                    'cancel-text="Отмена">',
+                         '<div class="form-group clearfix">',
+                            '<label class="control-label">Введите номер карты</label>',
+                            '<div>',
+                                '<div class="input-group">',
+                                    '<span class="input-group-addon"><span class="fa fa-pencil"></span></span>',
+                                    '<input v-model="card" type="number" name="card"  class="form-control"/>',
+                                '</div>',
+                            '</div>',
+                        '</div>',
+                '</re-modal>',
             '</div>',
         ].join(' '),
         components: {
@@ -87,6 +190,7 @@ $(document).ready(function() {
             tabGroup: VueStrap.tabGroup,
             tab: VueStrap.tab
         },
+        mixins: [mixin],
         data: function() {
 
             return {
@@ -97,6 +201,9 @@ $(document).ready(function() {
                     '<i class="fa fa-folder">&nbsp;</i><span>Договоры</span>',
                     '<i class="fa fa-files-o">&nbsp;</i><span>Полученные кредиты/займы</span>',
                     '<i class="fa fa-list">&nbsp;</i><span>Счета компании</span>',
+                    '<i class="fa fa-envelope">&nbsp;</i><span>Запросы на инвестирование</span>',
+                    '<i class="fa fa-files-o">&nbsp;</i><span>Выданные кредиты/займы</span>',
+                    '<i class="fa fa-commenting-o">&nbsp;</i><span>Способы инвестирования</span>',
                 ],
                 drawTable:false,
                 myrequestsrows: [
@@ -402,11 +509,84 @@ $(document).ready(function() {
                             data: 'creditLimit',
                         },
                     ]
+                },
+                selectedRow: null,
+                investmentconfig: {
+                    columns: [
+                        {
+                            render: function() {
+                                return '<input type="radio" name="selectrow"/>';
+                            }
+                        },
+                        {
+                            title: '№',
+                            data: 'id',
+                        },
+                        {
 
-                }
+                            title: 'Дата создания',
+                            data: 'creationDate',
+                            render: function(value) {
+                                return moment(value).format('MM.DD.YYYY, HH:mm:ss');
+                            },
+                        },
+                        {
+                            title: 'Клиент',
+                            data: 'client',
+                        },
+                        {
+                            title: 'крайний срок выдачи',
+                            data: 'endDate',
+                            render: function(value) {
+                                return moment(value).format('MM.DD.YYYY, HH:mm:ss');
+                            },
+                        },
+                        {
+                            title: 'Номер с ЕИС площадка',
+                            data: 'eis',
+                            render: function(value) {
+                                return value.number+'<br>'+'<span>'+value.title+'</span>';
+                            },
+                        },
+                        {
+                            title: 'Сумма',
+                            data: 'sum',
+                            render: function(value) {
+                                return value+' руб.';
+                            },
+                        },
+                        {
+                            title: 'Предложения',
+                            data: 'tender',
+                        },
+                        {
+                            title: 'Период',
+                            data: 'period',
+                        },
+                        {
+                            title: 'Процент за займ',
+                            data: 'percent',
+                        },
+                        {
+                            title: 'Фин. статус',
+                            data: 'financeStatus',
+                        },
+                    ],
+                },
             }
         },
         ready: function() {
+        },
+        methods: {
+            getRowData: function(row) {
+                var vm = this;
+                vm.selectedRow = row;
+            },
+            showInvestmentDialog: function() {
+                var vm = this;
+                vm.showAcception = false;
+                vm.investmentDialog = true;
+            }
         }
         // options
         })

@@ -16,12 +16,8 @@ module.exports.navigation = [
         href   : '/about',
     },
     {
-        name   : 'ЛК получение',
+        name   : 'Л/К',
         href   : '/loan',
-    },
-    {
-        name   : 'ЛК размещение',
-        href   : '/deposites',
     },
 
     // {
