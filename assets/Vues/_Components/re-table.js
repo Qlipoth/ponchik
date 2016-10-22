@@ -236,77 +236,77 @@ Vue.component('re-table', Vue.extend({
                     selector: 'td:first-child'
                 },
 
-                    language: {
-                    search: "Поиск:",
-                    paginate: {
-                        first:      "Первая",
-                        last:       "Последняя",
-                        next:       "Следующая",
-                        previous:   "Предыдущая"
-                    },
-                    info:           "Показано _START_ из _END_ из _TOTAL_ записей",
-                    buttons: {
-                        colvis: 'Видимые колонки'
-                    }
+                language: {
+                search: "Поиск:",
+                paginate: {
+                    first:      "Первая",
+                    last:       "Последняя",
+                    next:       "Следующая",
+                    previous:   "Предыдущая"
+                },
+                info:           "Показано _START_ из _END_ из _TOTAL_ записей",
+                buttons: {
+                    colvis: 'Видимые колонки'
                 }
-            });
+            }
+        });
 
-            // if (vm.checked) {
-            //     // у таблицы есть колонка с чекбоксами
-            //     conf.columns.unshift({
-            //         data: null,
-            //         title: [
-            //             '<re-check',
-            //                 'data="all"',
-            //                 '@check="setChecked"',
-            //                 '@uncheck="setUnchecked"',
-            //                 '>',
-            //             '</re-check>',
-            //         ].join(' '),
-            //         className: 'ta-c',
-            //         sortable: false,
-            //         render: function (data, type, row, meta) {
-            //             return [
-            //                 '<re-check',
-            //                     'data='+meta.row,
-            //                     '@check="setChecked"',
-            //                     '@uncheck="setUnchecked"',
-            //                     '>',
-            //                 '</re-check>',
-            //             ].join(' ');
-            //         },
-            //     });
+            if (vm.checked) {
+                // у таблицы есть колонка с чекбоксами
+                conf.columns.unshift({
+                    data: null,
+                    title: [
+                        '<re-check',
+                            'data="all"',
+                            '@check="setChecked"',
+                            '@uncheck="setUnchecked"',
+                            '>',
+                        '</re-check>',
+                    ].join(' '),
+                    className: 'ta-c',
+                    sortable: false,
+                    render: function (data, type, row, meta) {
+                        return [
+                            '<re-check',
+                                'data='+meta.row,
+                                '@check="setChecked"',
+                                '@uncheck="setUnchecked"',
+                                '>',
+                            '</re-check>',
+                        ].join(' ');
+                    },
+                });
 
-            //     *
-            //      * После рендера строки с вью-компонентом
-            //      * нужно создать на ней вью-инстанс (onDraw)
-            //      *
+                // *
+                //  * После рендера строки с вью-компонентом
+                //  * нужно создать на ней вью-инстанс (onDraw)
+                //  *
 
-            //     _.extend(vm.config, {
-            //         rowCallback: function(row) {
-            //             vm.onDraw(row);
-            //         },
-            //         headerCallback: function(row) {
-            //             vm.onDraw(row);
-            //         },
+                _.extend(vm.config, {
+                    rowCallback: function(row) {
+                        vm.onDraw(row);
+                    },
+                    headerCallback: function(row) {
+                        vm.onDraw(row);
+                    },
 
-            //         //
-            //         // // могуть быть проблемы при "дефер рендер"
-            //         //
-            //         // drawCallback: function() {
-            //         //     console.log('drawCallback');
-            //         //     vm.onDraw(this[0]);
-            //         // },
+                    //
+                    // // могуть быть проблемы при "дефер рендер"
+                    //
+                    drawCallback: function() {
+                        console.log('drawCallback');
+                        vm.onDraw(this[0]);
+                    },
 
-            //         //
-            //         // // могут быть проблемы с $nextTick
-            //         //
-            //         // createdRow: function(row) {
-            //         //     console.log('createdRow');
-            //         //     // vm.onDraw(row)
-            //         // },
-            //     });
-            // }
+                    
+                    // могут быть проблемы с $nextTick
+                    
+                    createdRow: function(row) {
+                        console.log('createdRow');
+                        // vm.onDraw(row)
+                    },
+                });
+            }
 
 
             if (conf.actions && conf.actions.length) {
@@ -316,6 +316,7 @@ Vue.component('re-table', Vue.extend({
                 ];
 
                 _.each(conf.actions, function(action, i) {
+                    console.log('action', action)
                     toRender.push([
                         '<div ',
                             'class="btn btn-default"',
@@ -342,9 +343,9 @@ Vue.component('re-table', Vue.extend({
             vm.DT = $(dt).DataTable(conf);
              // $('.dataTables_scrollBody').mCustomScrollbar({axis: "x"});
             // Получаю данные из строки по клику, эмичу событие наверх
-            vm.DT.on( 'click', 'tr>td.clicable', function() {
+            vm.DT.on( 'click', 'tr>td.select-checkbox', function() {
                 var rowInfo = vm.DT.row(this).data();
-                // vm.$emit('onrowclick', rowInfo);
+                vm.$emit('onrowclick', rowInfo);
             });
         }
     },

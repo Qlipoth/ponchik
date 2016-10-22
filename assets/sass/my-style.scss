@@ -397,9 +397,22 @@
     display: flex;
     align-items: center;
     width: 100%;
+    input.reqi-control {
+    	width: 80px;
+    }
     .reqi-control {
-       width: auto;
+    	width: auto;
        margin-right: 15px;
     }
 
+}
+//  datatables
+.select-checkbox {
+	&:after {
+		display: none;
+		content: '' !important;
+	}
+}
+.re-white-popup {
+	    max-width: 300px;
 }

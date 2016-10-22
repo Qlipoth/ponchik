@@ -6,21 +6,21 @@ $(document).ready(function() {
                 '<tabs :class="my-tabs">',
                     '<tab :header="tabHeaders[0]">',
                         '<h3>Запросы на инвестирование</h3><br/>',
-                        '<div class="form-group clearfix form-horizontal">',
-                            '<re-table v-bind:rows="investmentrows" v-bind:config="investmentconfig"></re-table>',
-                            '<div id="reqi" class="form-group clearfix">',
+                        '<div class="form-group clearfix form-horizontal table-with-radio">',
+                            '<re-table @onrowclick="getRowData" v-bind:rows="investmentrows" v-bind:config="investmentconfig"></re-table>',
+                            '<div role="form" id="reqi" class="form-group clearfix">',
                                 '<label class="control-label reqi-control">Сумма</label>',
-                                '<input placeholder="%" type="number" min="0" class="form-control reqi-control"/>',
+                                '<input type="number" min="0" class="form-control reqi-control"/>',
                                 '<label class="control-label reqi-control">Процент</label>',
-                                '<input placeholder="%" type="number" min="0" class="form-control reqi-control"/>',
-                                '<button class="btn btn-primary reqi-control">Предложить</button>',
+                                '<input id="invper"  type="number" class="form-control reqi-control" value=""/>',
+                                '<button @click="showAcception = true" class="btn btn-primary reqi-control">Предложить</button>',
                             '</div>',
                         '</div>',
                     '</tab>',
                     '<tab :header="tabHeaders[1]">',
                         '<h3>Выданные кредиты/займы</h3><br/>',
                         '<div class="form-group clearfix">',
-                            '<re-table v-bind:rows="investmentrows" v-bind:config="investmentconfig"></re-table>',
+                            '<re-table v-bind:rows="investmentrows" v-bind:config="investmentconfig1"></re-table>',
                         '</div>',
                     '</tab>',
                     '<tab :header="tabHeaders[2]">',
@@ -83,6 +83,29 @@ $(document).ready(function() {
                         '</div>',
                     '</tab>',
                 '</tabs>',
+                '<re-modal :showfooter="true" ',
+                    ':item.sync="showAcception"', 
+                    'title="Требуется подтверждение"', 
+                    '@save="showInvestmentDialog"',
+                    'ok-text="Ок"',
+                    'cancel-text="Отмена">',
+                        '<h3 class="text-center">Вы действительно хотите это сделать?</h3>',
+                '</re-modal>',
+                '<re-modal :showfooter="true" ',
+                    ':item.sync="investmentDialog"', 
+                    'title="Номер карты"', 
+                    'ok-text="Ок"',
+                    'cancel-text="Отмена">',
+                         '<div class="form-group clearfix">',
+                            '<label class="control-label">Введите номер карты</label>',
+                            '<div>',
+                                '<div class="input-group">',
+                                    '<span class="input-group-addon"><span class="fa fa-pencil"></span></span>',
+                                    '<input v-model="card" type="number" name="card"  class="form-control"/>',
+                                '</div>',
+                            '</div>',
+                        '</div>',
+                '</re-modal>',
             '</div>',
         ].join(' '),
         components: {
@@ -93,19 +116,27 @@ $(document).ready(function() {
         data: function() {
 
             return {
+                card: null,
+                showAcception: false,
+                investmentDialog: false,
                 tabHeaders: [
                     '<i class="fa fa-envelope">&nbsp;</i><span>Запросы на инвестирование</span>',
                     '<i class="fa fa-files-o">&nbsp;</i><span>Выданные кредиты/займы</span>',
                     '<i class="fa fa-commenting-o">&nbsp;</i><span>Способы инвестирования</span>',
                 ],
                 drawTable:false,
+                // чекнутая строка таблицы
+                selectedRow: null,
                 investmentrows: [
                     {
                         id : 89898943434,
                         creationDate: new Date(),
                         client: 'ОАО Банк',
                         endDate: new Date(),
-                        eis: 3453485345000045+'<br>Сбербанк',
+                        eis: {
+                            number: 3453485345000045,
+                            title: 'Сбербанк'   
+                        },
                         sum: 234567,
                         tender: 10,
                         period: 0,
@@ -117,7 +148,10 @@ $(document).ready(function() {
                         creationDate: new Date(),
                         client: 'ОАО Банк',
                         endDate: new Date(),
-                        eis: 3453485345000045+'<br>Сбербанк',
+                        eis: {
+                            number: 3453485345000045,
+                            title: 'Сбербанк'   
+                        },
                         sum: 234567,
                         tender: 10,
                         period: 0,
@@ -128,7 +162,6 @@ $(document).ready(function() {
                 investmentconfig: {
                     columns: [
                         {
-                            data: 'id',
                             render: function() {
                                 return '<input type="radio" name="selectrow"/>';
                             }
@@ -159,6 +192,66 @@ $(document).ready(function() {
                         {
                             title: 'Номер с ЕИС площадка',
                             data: 'eis',
+                            render: function(value) {
+                                return value.number+'<br>'+'<span>'+value.title+'</span>';
+                            },
+                        },
+                        {
+                            title: 'Сумма',
+                            data: 'sum',
+                            render: function(value) {
+                                return value+' руб.';
+                            },
+                        },
+                        {
+                            title: 'Предложения',
+                            data: 'tender',
+                        },
+                        {
+                            title: 'Период',
+                            data: 'period',
+                        },
+                        {
+                            title: 'Процент за займ',
+                            data: 'percent',
+                        },
+                        {
+                            title: 'Фин. статус',
+                            data: 'financeStatus',
+                        },
+                    ],
+                },
+                investmentconfig1: {
+                    columns: [
+                        {
+                            title: '№',
+                            data: 'id',
+                        },
+                        {
+
+                            title: 'Дата создания',
+                            data: 'creationDate',
+                            render: function(value) {
+                                return moment(value).format('MM.DD.YYYY, HH:mm:ss');
+                            },
+                        },
+                        {
+                            title: 'Клиент',
+                            data: 'client',
+                        },
+                        {
+                            title: 'крайний срок выдачи',
+                            data: 'endDate',
+                            render: function(value) {
+                                return moment(value).format('MM.DD.YYYY, HH:mm:ss');
+                            },
+                        },
+                        {
+                            title: 'Номер с ЕИС площадка',
+                            data: 'eis',
+                            render: function(value) {
+                                return value.number+'<br>'+'<span>'+value.title+'</span>';
+                            },
                         },
                         {
                             title: 'Сумма',
@@ -387,6 +480,17 @@ $(document).ready(function() {
             }
         },
         ready: function() {
+        },
+        methods: {
+            getRowData: function(row) {
+                var vm = this;
+                vm.selectedRow = row;
+            },
+            showInvestmentDialog: function() {
+                var vm = this;
+                vm.showAcception = false;
+                vm.investmentDialog = true;
+            }
         }
         // options
         })
