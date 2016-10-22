@@ -68,7 +68,7 @@ $(document).ready(function() {
                                     '</div>',
                                 '</div>',
                                 '<div class="form-group clearfix form-horizontal">',
-                                    '<label class="col-md-2 control-label">расчетный счет</label>',
+                                    '<label class="col-md-2 control-label">Раcсчетный счет</label>',
                                     '<div class="col-md-7">',
                                         '<div class="input-group">',
                                             '<span class="input-group-addon"><span class="fa fa-pencil"></span></span>',
