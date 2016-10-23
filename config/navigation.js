@@ -1,10 +1,10 @@
 module.exports.navigation = [
-     {
-        name   : 'Разместить финансы',
-        href   : '/finances',
-    },
+    //  {
+    //     name   : 'Разместить финансы',
+    //     href   : '/finances',
+    // },
     {
-        name   : 'Услуги',
+        name   : 'Финансовые сервисы',
         href   : '/services',
     },
     {

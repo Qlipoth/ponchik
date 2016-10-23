@@ -4,7 +4,7 @@ $(document).ready(function() {
         template: [
             '<div class="my-tabs-box" @click="redsizeTable">',
                 '<tabs :class="my-tabs" :active="1">',
-                    '<tab header="Получение" disabled></tab>',       
+                    '<tab header="Получение финансов" disabled></tab>',       
                     '<tab :header="tabHeaders[0]">',
                         '<h3>Публикация заявки</h3><br/>',
                         '<div class="panel panel-default">',
@@ -90,7 +90,7 @@ $(document).ready(function() {
                             '<re-table v-bind:rows="creditaccountrows" v-bind:config="creditaccountconfig"></re-table>',
                         '</div>',
                     '</tab>',
-                    '<tab header="Размещение" disabled></tab>', 
+                    '<tab header="Размещение финансов" disabled></tab>', 
                     '<tab :header="tabHeaders[6]">',
                         '<h3>Запросы на инвестирование</h3><br/>',
                         '<div class="form-group clearfix form-horizontal table-with-radio">',

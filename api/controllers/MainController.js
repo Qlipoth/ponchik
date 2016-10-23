@@ -46,8 +46,8 @@ module.exports = {
     },
     services: function(req, res) {
         return res.render('Main', _.extend({}, toView, {
-            title: 'Услуги',
-            pageTitle: 'Услуги',
+            title: '',
+            pageTitle: '',
             bc: [
                 {name: 'Главная', href: '/'},
                 {name: 'Услуги', href: '/services'},
