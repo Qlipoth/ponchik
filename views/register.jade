@@ -16,13 +16,13 @@ block body
         for error in req.flash('error')
           +error(error)
         
-        form(action='/doRegister', method='post').form-horizontal
+        form(action='/?r=site%2Fsignup', method='POST').form-horizontal
           h4 Персональные данные
           .form-group
             .col-md-12
               input.form-control(
                 type='text',
-                name='firstname',
+                name='User[firstname]',
                 value=form.firstname,
                 placeholder='Имя',
                 )
@@ -30,7 +30,7 @@ block body
             .col-md-12
               input.form-control(
                 type='text',
-                name='surname',
+                name='User[surname]',
                 value=form.surname,
                 placeholder='Фамилия',
                 )
@@ -38,7 +38,7 @@ block body
             .col-md-12
               input.form-control(
                 type='text',
-                name='email',
+                name='User[email]',
                 value=form.email,
                 placeholder='E-mail',
                 )
@@ -47,15 +47,15 @@ block body
             .col-md-12
               input.form-control(
                 type='text',
-                name='login',
-                value=form.login,
+                name='User[username]',
+                value=form.username,
                 placeholder='Логин',
                 )
           .form-group
             .col-md-12
               input.form-control(
                 type='password',
-                name='password',
+                name='User[password]',
                 value=form.password,
                 placeholder='Пароль'
                 )
@@ -63,7 +63,7 @@ block body
             .col-md-12
               input.form-control(
                 type='password',
-                name='repassword',
+                name='User[repassword]',
                 value=form.repassword,
                 placeholder='Пароль еще раз',
                 )
