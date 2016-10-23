@@ -39,7 +39,7 @@ $(document).ready(function() {
                                         '</div>',
                                     '</div>',
                                     '<div class="form-group">',
-                                        '<label class="col-md-3 control-label tender-info" v-model="invNew.name" >Сумма</label>',
+                                        '<label class="col-md-3 control-label tender-info" >Сумма</label>',
                                         '<div class="col-md-9">',
                                             '<div class="input-group">',
                                                 '<span class="input-group-addon"><span class="fa fa-pencil"></span></span>',
@@ -94,13 +94,13 @@ $(document).ready(function() {
                     '<tab :header="tabHeaders[6]">',
                         '<h3>Запросы на инвестирование</h3><br/>',
                         '<div class="form-group clearfix form-horizontal table-with-radio">',
-                            '<re-table @onrowclick="getRowData" v-bind:rows="investmentrows" v-bind:config="investmentconfig"></re-table>',
+                            '<re-table v-ref:invreqtable @onrowclick="getRowData" v-bind:rows="investmentrows" v-bind:config="investmentconfig"></re-table>',
                             '<div role="form" id="reqi" class="form-group clearfix">',
                                 '<label class="control-label reqi-control">Сумма</label>',
-                                '<input type="number" min="0" class="form-control reqi-control"/>',
+                                '<input type="number" min="0" class="form-control reqi-control" v-model="invReq.money" />',
                                 '<label class="control-label reqi-control">Процент</label>',
-                                '<input id="invper"  type="number" class="form-control reqi-control" value=""/>',
-                                '<button @click="showAcception = true" class="btn btn-primary reqi-control">Предложить</button>',
+                                '<input id="invper"  type="number" class="form-control reqi-control"  v-model="invReq.interest" />',
+                                '<button @click="saveInvReq" class="btn btn-primary reqi-control">Предложить</button>',
                             '</div>',
                         '</div>',
                     '</tab>',
@@ -216,6 +216,12 @@ $(document).ready(function() {
                     bik: '',
                     ks: '',
                     bs: '',
+                },
+
+                invReq: { // вкладка "Запросы на инвестирование"
+                    project_id: null,
+                    money: '',
+                    interest: '',
                 },
 
                 card: null,
@@ -541,9 +547,9 @@ $(document).ready(function() {
                 investmentconfig: {
                     columns: [
                         {
-                            render: function() {
-                                return '<input type="radio" name="selectrow"/>';
-                            }
+                            render: function(a,b, data) {
+                                return '<input type="radio" data-id="'+data.id+'" name="selectrow" />';
+                            },
                         },
                         {
                             title: '№',
@@ -637,6 +643,24 @@ $(document).ready(function() {
                 mp.confirm('Вы действительно хотите отправить заявку?', function() {
                     $.post('/?r=project%2Fupdate', {
                         Project: _.extend({}, vm.invNew), 
+                    })
+                    .done(function() {
+                        mp.alert('Данные успешно сохранены');
+                    })
+                    .fail(mp.err)
+                    ;
+                });
+            },
+
+            saveInvReq: function() {
+                var vm = this;
+                mp.confirm('Вы действительно хотите отправить заявку?', function() {
+                    var table = vm.$refs.invreqtable.$el;
+                    var checked = $(table).find("input[type='radio']:checked");
+                    $.post('/?r=credit%2Fcreate', {
+                        Project: _.extend({}, vm.invReq, {
+                            project_id: checked ? checked.first().data('id') : 0,
+                        }), 
                     })
                     .done(function() {
                         mp.alert('Данные успешно сохранены');
