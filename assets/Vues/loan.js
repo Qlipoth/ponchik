@@ -2,7 +2,7 @@ $(document).ready(function() {
     window.vm = new Vue({
         el: '#loanTabs',
         template: [
-            '<div class="my-tabs-box">',
+            '<div class="my-tabs-box" @click="redsizeTable">',
                 '<tabs :class="my-tabs" :active="1">',
                     '<tab header="Получение" disabled></tab>',       
                     '<tab :header="tabHeaders[0]">',
@@ -611,6 +611,9 @@ $(document).ready(function() {
         ready: function() {
         },
         methods: { 
+            redsizeTable: function() {
+                $('.re-datatable').dataTable().resize();
+            },
             createReq: function() {
                 $('#createReq').click();
             },
