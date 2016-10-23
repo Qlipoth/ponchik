@@ -107,12 +107,12 @@ $(document).ready(function() {
                                 '<div class="form-group clearfix">',
                                     '<div class="radio">',
                                         '<label>',
-                                            '<input type="radio" name="modeInvestment"/>Инвестировать с банковской карты',
+                                            '<input type="radio" name="modeInvestment" v-model="invType.company_type_id" value="1" />Инвестировать с банковской карты',
                                         '</label>',
                                     '</div>',
                                     '<div class="radio">',
                                         '<label>',
-                                            '<input type="radio" name="modeInvestment"/>Инвестировать с расчетного счета',
+                                            '<input type="radio" name="modeInvestment" v-model="invType.company_type_id" value="2" />Инвестировать с расчетного счета',
                                         '</label>',
                                     '</div>',
                                 '</div>',
@@ -123,7 +123,7 @@ $(document).ready(function() {
                                         '<div class="col-md-7">',
                                             '<div class="input-group">',
                                                 '<span class="input-group-addon"><span class="fa fa-pencil"></span></span>',
-                                                '<input type="text" class="form-control"/>',
+                                                '<input type="text" class="form-control" v-model="invType.bank_name" />',
                                             '</div>',
                                         '</div>',
                                     '</div>',
@@ -131,7 +131,7 @@ $(document).ready(function() {
                                     '<div class="col-md-7">',
                                         '<div class="input-group">',
                                             '<span class="input-group-addon"><span class="fa fa-pencil"></span></span>',
-                                            '<input type="text" class="form-control"/>',
+                                            '<input type="text" class="form-control" v-model="invType.bik" />',
                                         '</div>',
                                     '</div>',
                                 '</div>',
@@ -140,7 +140,7 @@ $(document).ready(function() {
                                     '<div class="col-md-7">',
                                         '<div class="input-group">',
                                             '<span class="input-group-addon"><span class="fa fa-pencil"></span></span>',
-                                            '<input type="text" class="form-control"/>',
+                                            '<input type="text" class="form-control" v-model="invType.ks" />',
                                         '</div>',
                                     '</div>',
                                 '</div>',
@@ -149,12 +149,12 @@ $(document).ready(function() {
                                     '<div class="col-md-7">',
                                         '<div class="input-group">',
                                             '<span class="input-group-addon"><span class="fa fa-pencil"></span></span>',
-                                            '<input type="text" class="form-control"/>',
+                                            '<input type="text" class="form-control" v-model="invType.bs" />',
                                         '</div>',
                                     '</div>',
                                 '</div>',                                
                                 '<div class="col-md-2 col-md-offset-2">',
-                                    '<button class="btn btn-primary">Сохранить</button>',
+                                    '<button class="btn btn-primary" @click="saveInvType">Сохранить</button>',
                                 '</div>',
                             '</div>',
                         '</div>',
@@ -194,6 +194,14 @@ $(document).ready(function() {
         data: function() {
 
             return {
+                invType: {
+                    company_type_id: 1,
+                    bank_name: '',
+                    bik: '',
+                    ks: '',
+                    bs: '',
+                },
+
                 card: null,
                 showAcception: false,
                 investmentDialog: false,
@@ -592,7 +600,21 @@ $(document).ready(function() {
                 var vm = this;
                 vm.showAcception = false;
                 vm.investmentDialog = true;
-            }
+            },
+
+            saveInvType: function() {
+                var vm = this;
+                mp.confirm('Вы действительно хотите сохранить введенные данные?', function() {
+                    $.post('/?r=company%2Fpay-option-update', {
+                        Company: _.extend({}, vm.invType), 
+                    })
+                    .done(function() {
+                        mp.alert('Данные успешно сохранены');
+                    })
+                    .fail(mp.err)
+                    ;
+                });
+            },
         }
         // options
         })
