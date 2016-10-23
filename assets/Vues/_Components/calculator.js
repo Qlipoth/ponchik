@@ -43,7 +43,7 @@ Vue.component('calculator', Vue.extend({
 										'<div>',
 											'<div class="pull-right">',
 												'<h4>',
-													'Итого:&nbsp;<strong>{{total || "Ошибка!"}}</strong>',
+													'Стоимость займа:&nbsp;<strong>{{total || "Ошибка!"}}</strong>',
 												'</h4>',
 											'</div>',
 										'</div>',
@@ -64,25 +64,25 @@ Vue.component('calculator', Vue.extend({
 
 	  		if (vm.program == 1) {
 	  			percent = 16 / 365 * loanTerm;
-	    		sum = loanAmount + (loanAmount / 100 * percent);
+	    		sum = loanAmount / 100 * percent;
 	    	}
 	    	else {
 	    		percent = 25 / 365 * loanTerm;
-	      	sum = loanAmount + (loanAmount / 100 * percent);
+	      	sum = loanAmount / 100 * percent;
 	    	}
-	    	vm.total = !isNaN(parseFloat(sum)) && isFinite(sum)? sum.toFixed(2) : null;
+	    	vm.total = !isNaN(parseFloat(sum)) && isFinite(sum) ? sum.toFixed(2) : null;
 			}
 		},
 		ready: function() {
 				var vm = this;
-
+				this.calculate();
 		},
 		data: function() {
 				return {
 					total: '0',
 					program: null,
-					loanAmount: 0,
-					loanTerm: 0,
+					loanAmount: 100000,
+					loanTerm: 365,
 				}
 		},
 
