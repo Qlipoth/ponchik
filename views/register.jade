@@ -10,27 +10,21 @@ block append head
 block body
   .registration-container
     .registration-box.animated.fadeInDown
-      .registration-logo
       .registration-body
-        .registration-title
-          strong Registration,
-          | use form bellow
-        .registration-subtitle
-          // TODO:
-          | Lorem ipsum dolor sit amet, consectetur adipiscing elit. In odio mauris, maximus ac sapien sit amet. 
-
+        .registration-title.text-center
+          strong Регистрация
         for error in req.flash('error')
           +error(error)
         
         form(action='/doRegister', method='post').form-horizontal
-          h4 Personal info
+          h4 Персональные данные
           .form-group
             .col-md-12
               input.form-control(
                 type='text',
                 name='firstname',
                 value=form.firstname,
-                placeholder='First Name',
+                placeholder='Имя',
                 )
           .form-group
             .col-md-12
@@ -38,7 +32,7 @@ block body
                 type='text',
                 name='surname',
                 value=form.surname,
-                placeholder='Surname',
+                placeholder='Фамилия',
                 )
           .form-group
             .col-md-12
@@ -48,14 +42,14 @@ block body
                 value=form.email,
                 placeholder='E-mail',
                 )
-          h4 Authentication
+          h4 Аутентификация
           .form-group
             .col-md-12
               input.form-control(
                 type='text',
                 name='login',
                 value=form.login,
-                placeholder='Login',
+                placeholder='Логин',
                 )
           .form-group
             .col-md-12
@@ -63,7 +57,7 @@ block body
                 type='password',
                 name='password',
                 value=form.password,
-                placeholder='Password'
+                placeholder='Пароль'
                 )
           .form-group
             .col-md-12
@@ -71,21 +65,21 @@ block body
                 type='password',
                 name='repassword',
                 value=form.repassword,
-                placeholder='Re-Password',
+                placeholder='Пароль еще раз',
                 )
           .form-group.push-up-30
             .col-md-6
-              a.btn.btn-link.btn-block(href='/auth') Already have an account?
+              a.btn.btn-link.btn-block(href='/auth') Уже есть аккаунт?
             .col-md-6
-              button.btn.btn-danger.btn-block Sign Up
+              button.btn.btn-danger.btn-block Зарегистрироваться
         //- eo form
       .registration-footer
         .pull-left
-          | © 2015 AppName
+          | © 2016 Pon4ik
         .pull-right
-          a(href='#') About
+          a(href='/about') О компании
           |  |
-          a(href='#') Privacy
+          a(href='/partners') Партнеры
           |  |
-          a(href='#') Contact Us
+          a(href='/services') Услуги
   
