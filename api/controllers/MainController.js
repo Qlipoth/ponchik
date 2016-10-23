@@ -59,7 +59,7 @@ module.exports = {
         return res.render('Partners', _.extend({}, toView, {
             title: 'Партнеры',
             pageTitle: 'Партнеры',
-               bc: [
+            bc: [
                 {name: 'Главная', href: '/'},
                 {name: 'Партнеры', href: '/partners'},
             ],
@@ -70,7 +70,11 @@ module.exports = {
         return res.render('Main', _.extend({}, toView, {
             title: 'О компании',
             pageTitle: 'О компании',
-            html: 'О компании',
+            bc: [
+                {name: 'Главная', href: '/'},
+                {name: 'О компании', href: '/about'},
+            ],
+            vue: '/Vues/about.js'
         }));
     },
 

@@ -3,6 +3,7 @@ $(document).ready(function() {
         el: '#vue',
         template: [
             '<div class="container services">',
+                '<h2 class="text-center">Услуги</h2>',
                 '<div>',
                     '<h2 class="l-title">Финансовые сервисы</h2>',
                     '<br>',
