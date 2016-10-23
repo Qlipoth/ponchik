@@ -37,7 +37,7 @@ module.exports = {
         return res.render('Deposites', _.extend({}, toView, {
             title: 'ЛК размещение',
             pageTitle: 'ЛК размещение',
-             bc: [
+            bc: [
                 {name: 'Главная', href: '/'},
                 {name: 'ЛК размещение', href: '/personal'},
             ],
@@ -48,7 +48,11 @@ module.exports = {
         return res.render('Main', _.extend({}, toView, {
             title: 'Услуги',
             pageTitle: 'Услуги',
-            html: 'Услуги',
+            bc: [
+                {name: 'Главная', href: '/'},
+                {name: 'Услуги', href: '/services'},
+            ],
+            vue: '/Vues/services.js'
         }));
     },
     partners: function(req, res) {

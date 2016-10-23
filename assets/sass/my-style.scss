@@ -46,9 +46,9 @@
             height: calc(100vh - 100px);
         }
     }
-    .page-content-wrap {
-        margin-top: 15px;
-    }
+    // .page-content-wrap {
+    //     margin-top: 15px;
+    // }
     // Над шапкой
     .pre-header {
         background: #fff;
@@ -124,16 +124,16 @@
     .my-tabs-box >div {
         display: flex;
         .nav-tabs {
-        	li.disabled {
-	        	margin-bottom: 10px;
-	        	a {
-	        		&:hover {
-	                    background: transparent;
-	                    color: #fff;
-	                    cursor: default;
-	                }
-	        	}
-	        }
+            li.disabled {
+                margin-bottom: 10px;
+                a {
+                    &:hover {
+                        background: transparent;
+                        color: #fff;
+                        cursor: default;
+                    }
+                }
+            }
             margin-bottom: 0;
             margin-left: -10px;
             margin-top: -40px;
@@ -200,9 +200,9 @@
     }
     // Лэндинг
     .landing-img-box {
-    	img {
-    		width: 100%;
-    	}
+        img {
+            width: 100%;
+        }
     }
     .flex-row {
         display: flex;
@@ -476,11 +476,19 @@
     }
 }
 
-//  datatables
-.select-checkbox {
-    &:after {
-        display: none;
-        content: '' !important;
+// Услуги
+#body {
+    .services {
+        .service-item {
+            flex-basis: 20%;
+        }
+    }
+    //  datatables
+    .select-checkbox {
+        &:after {
+            display: none;
+            content: '' !important;
+        }
     }
 }
 
