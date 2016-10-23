@@ -116,12 +116,12 @@ $(document).ready(function() {
         popup.append(html);
 
         var btns = $('<div class="mt-10"></div>');
-            var ok = $(Jade.els.button('OK')).addClass('mr-10');
+            var ok = $('<button class="btn btn-primary">OK</button>').addClass('mr-10');
                 ok.bind('click', function() {
                     cb();
                     $.magnificPopup.close();
                 });
-            var cancel = $(Jade.els.button('Cancel'));
+            var cancel = $('<button class="btn btn-primary">Cancel</button>');
                 cancel.bind('click', function() {
                     $.magnificPopup.close();
                 });

@@ -2,14 +2,14 @@ extends ./_layouts/main.jade
 
 block append head
   - var form = req.flash('signup')[0] || {}
+  script(src='/Vues/auth.js')
   //- +globalVar('tags', tags)
-  //- script(src='/ViewControllers/index.js')
   //- style.
 
 
 block body
 
-  .login-container
+  #login-container.login-container
     .login-box.animated.fadeInDown
       .login-body
         .login-title
@@ -26,12 +26,12 @@ block body
               a(href='#bycert', data-toggle='tab', aria-expanded='false') сертификат ЭП
           .panel-body.tab-content
             #bylogin.tab-pane.active
-              form.form-horizontal(action='/doLogin', method='post')
+              form.form-horizontal(action='/?r=site%2Flogin', method='POST')
                 .form-group
                   .col-md-12
                     input.form-control(
                       type='text',
-                      name='login',
+                      name='User[username]',
                       value=form.login,
                       placeholder='Логин',
                       )
@@ -39,7 +39,7 @@ block body
                   .col-md-12
                     input.form-control(
                       type='password',
-                      name='password',
+                      name='User[password]',
                       value=form.password,
                       placeholder='Пароль'
                       )
@@ -47,9 +47,9 @@ block body
                   .col-md-6
                     a.btn.btn-link.btn-block(href='/register') Создать аккаунт?
                   .col-md-6
-                    button.btn.btn-info.btn-block Войти
+                    button.btn.btn-info.btn-block(type="submit", value="Done") Войти
             #bycert.tab-pane
-              form.form-horizontal(action='/loginByCert', method='post')
+              form.form-horizontal(@submit.prevent='onByCert')
                 .form-group
                   .col-md-12
                     button.btn.btn-info.btn-block Войти
