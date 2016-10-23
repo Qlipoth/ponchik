@@ -13,17 +13,17 @@ $(document).ready(function() {
                                     '<h4>Финансовая услуга</h4>',
                                     '<div class="radio">',
                                         '<label>',
-                                            '<input type="radio" checked name="financeservice"/>Получить кредит/заем на обеспечение заявки',
+                                            '<input type="radio" checked name="financeservice" v-model="invNew.type_id" value="2" />Получить кредит/заем на обеспечение заявки',
                                         '</label>',
                                     '</div>',
                                     '<div class="radio">',
                                         '<label>',
-                                            '<input type="radio" name="financeservice"/>Получить банковскую гаранию для обеспечения исполнения контракта',
+                                            '<input type="radio" name="financeservice" v-model="invNew.type_id" value="3" />Получить банковскую гаранию для обеспечения исполнения контракта',
                                         '</label>',
                                     '</div>',
                                     '<div class="radio">',
                                         '<label>',
-                                            '<input type="radio" name="financeservice"/>Получить кредит/заем на исполнение контракта',
+                                            '<input type="radio" name="financeservice" v-model="invNew.type_id" value="4" />Получить кредит/заем на исполнение контракта',
                                         '</label>',
                                     '</div>',
                                 '</div>',
@@ -33,14 +33,24 @@ $(document).ready(function() {
                                         '<div class="col-md-9">',
                                             '<div class="input-group">',
                                                 '<span class="input-group-addon"><span class="fa fa-pencil"></span></span>',
-                                                '<input id="notice" type="text" class="form-control"/>',
+                                                '<input id="notice" type="text" class="form-control" v-model="invNew.name" />',
                                             '</div>',
                                             '<strong class="help-block">Искать на &nbsp;<a href="http://zakupki.gov.ru">zakupki.gov.ru</a></strong>',
                                         '</div>',
                                     '</div>',
+                                    '<div class="form-group">',
+                                        '<label class="col-md-3 control-label tender-info" v-model="invNew.name" >Сумма</label>',
+                                        '<div class="col-md-9">',
+                                            '<div class="input-group">',
+                                                '<span class="input-group-addon"><span class="fa fa-pencil"></span></span>',
+                                                '<input id="notice" type="text" class="form-control" v-model="invNew.price" />',
+                                            '</div>',
+                                        '</div>',
+                                    '</div>',
                                 '</div>',
                                 '<div class="col-md-12">',
-                                    '<button @click="showAcception = true" class="btn btn-primary">Получить</button>',
+                                    //'<button @click="showAcception = true" class="btn btn-primary">Получить</button>',
+                                    '<button @click="saveInvNew" class="btn btn-primary">Получить</button>',
                                 '</div>',
                             '</div>',
                         '</div>',
@@ -194,7 +204,13 @@ $(document).ready(function() {
         data: function() {
 
             return {
-                invType: {
+                invNew: { // вкладка "создать заявку"
+                    type_id: 2,
+                    name: '',
+                    price: '',
+                },
+
+                invType: { // вкладка "способы инвестирования"
                     company_type_id: 1,
                     bank_name: '',
                     bik: '',
@@ -607,6 +623,20 @@ $(document).ready(function() {
                 mp.confirm('Вы действительно хотите сохранить введенные данные?', function() {
                     $.post('/?r=company%2Fpay-option-update', {
                         Company: _.extend({}, vm.invType), 
+                    })
+                    .done(function() {
+                        mp.alert('Данные успешно сохранены');
+                    })
+                    .fail(mp.err)
+                    ;
+                });
+            },
+
+            saveInvNew: function() {
+                var vm = this;
+                mp.confirm('Вы действительно хотите отправить заявку?', function() {
+                    $.post('/?r=project%2Fupdate', {
+                        Project: _.extend({}, vm.invNew), 
                     })
                     .done(function() {
                         mp.alert('Данные успешно сохранены');
