@@ -19,9 +19,12 @@ Vue.component('documents', Vue.extend({
                     '<form action="#" class="dropzone dropzone-mini"></form>',
                 '</div>',
                 '<div class="col-md-12">',
-                    '<div class="btn btn-primary btn-file"> ',
-                    '<i class="glyphicon glyphicon-folder-open"></i> &nbsp;Добавить документ',
-                    '<input @change="onFileChange" type="file" id="doc"></div>',
+                    '<form v-el:frm action="/?r=project-file%2Fupload" method="POST" enctype="multipart/form-data">',
+                        '<div class="btn btn-primary btn-file"> ',
+                            '<i class="glyphicon glyphicon-folder-open"></i> &nbsp;Добавить документ',
+                            '<input @change="onFileChange" name="ProjectUploadFile[projectFile]" type="file" id="doc" />',
+                        '</div>',
+                    '</form>',
                 '</div>',
             '</div>',
         '</div>',
@@ -30,17 +33,17 @@ Vue.component('documents', Vue.extend({
     methods: {},
     ready: function() {
         var vm = this;
-
     },
     methods: {
         removeDoc: function(doc) {
             this.docs.$remove(doc)
         },
         onFileChange: function(e) {
-          var files = e.target.files || e.dataTransfer.files;
-          console.log(files)
-          if (!files.length)
-            return;
+            var files = e.target.files || e.dataTransfer.files;
+            if (!files.length) {
+                return;
+            }
+            $(this.$els.frm).submit();
         },
     },
     data: function() {
