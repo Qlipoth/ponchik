@@ -11,7 +11,6 @@ block body
 
   .login-container
     .login-box.animated.fadeInDown
-      .login-logo
       .login-body
         .login-title
           strong Здравствуйте
@@ -34,7 +33,7 @@ block body
                       type='text',
                       name='login',
                       value=form.login,
-                      placeholder='Login',
+                      placeholder='Логин',
                       )
                 .form-group
                   .col-md-12
@@ -42,11 +41,11 @@ block body
                       type='password',
                       name='password',
                       value=form.password,
-                      placeholder='Password'
+                      placeholder='Пароль'
                       )
                 .form-group
                   .col-md-6
-                    a.btn.btn-link.btn-block(href='/register') Need an account?
+                    a.btn.btn-link.btn-block(href='/register') Создать аккаунт?
                   .col-md-6
                     button.btn.btn-info.btn-block Войти
             #bycert.tab-pane
@@ -57,10 +56,10 @@ block body
 
       .login-footer
         .pull-left
-          | © 2015 AppName
+          | © 2016 Pon4ik
         .pull-right
-          a(href='#') About
+          a(href='/about') О компании
           |  |
-          a(href='#') Privacy
+          a(href='/partners') Партнеры
           |  |
-          a(href='#') Contact Us
+          a(href='/services') Услуги
