@@ -1,6 +1,6 @@
 $(document).ready(function() {
     window.vm = new Vue({
-        el: '#personalTabs',
+        el: '#loanTabs',
         template: [
             '<div class="my-tabs-box">',
                 '<tabs :class="my-tabs" :active="1">',
@@ -52,7 +52,7 @@ $(document).ready(function() {
                             '<h4>Фильтр</h4>',
                             '<re-table v-bind:rows="myrequestsrows" v-bind:config="myrequestsconfig"></re-table>',
                             '<div class="clearfix">',
-                                '<button class="btn btn-primary">Получить</button>',
+                                '<button @click="createReq" class="btn btn-primary">Создать заявку</button>',
                             '</div>',
                         '</div>',
                     '</tab>',
@@ -198,7 +198,7 @@ $(document).ready(function() {
                 showAcception: false,
                 investmentDialog: false,
                 tabHeaders: [
-                    '<i class="fa fa-file-text-o">&nbsp;</i><span>Создать заявку</span>',
+                    '<i class="fa fa-file-text-o">&nbsp;</i><span id="createReq">Создать заявку</span>',
                     '<i class="fa fa-envelope">&nbsp;</i><span>Мои заявки</span>',
                     '<i class="fa fa-commenting-o">&nbsp;</i><span>Запросы документов</span>',
                     '<i class="fa fa-folder">&nbsp;</i><span>Договоры</span>',
@@ -580,7 +580,10 @@ $(document).ready(function() {
         },
         ready: function() {
         },
-        methods: {
+        methods: { 
+            createReq: function() {
+                $('#createReq').click();
+            },
             getRowData: function(row) {
                 var vm = this;
                 vm.selectedRow = row;

@@ -8,16 +8,16 @@ module.exports = {
         }));
     },
 
-    // получить тендерный заем
+    // ЛК
     loan: function(req, res) {
-        return res.render('Personal', _.extend({}, toView, {
+        return res.render('Loan', _.extend({}, toView, {
             title: 'Л/К',
             pageTitle: 'Л/К',
             bc: [
                 {name: 'Главная', href: '/'},
-                {name: 'Л/К', href: '/personal'},
+                {name: 'Л/К', href: '/loan'},
             ],
-            vue: '/Vues/personal.js'
+            vue: '/Vues/loan.js'
         }));
     },
 
