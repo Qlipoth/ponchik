@@ -46,9 +46,9 @@
             height: calc(100vh - 100px);
         }
     }
-    // .page-content-wrap {
-    //     margin-top: 15px;
-    // }
+    .page-content {
+        padding-top: 30px;
+    }
     // Над шапкой
     .pre-header {
         background: #fff;
@@ -67,7 +67,7 @@
         background: #33414e;
     }
     .my-nav {
-        width: 100%;
+        width: 1200px;
         padding-right: 0;
         .description {
             display: block;
@@ -113,11 +113,13 @@
     }
     // Личный кабинет
     .personal {
+        padding-top: 32px;
         .cnt {
             margin-top: 0;
         }
         .breadcrumb {
             margin-left: 300px;
+            width: calc(100% - 300px);
         }
     }
     // табы
@@ -229,7 +231,7 @@
         .profit-item {
             width: 75px;
             margin: 20px;
-            padding: 30px;
+            padding: 10px;
             text-align: center;
             border: 1px solid #ddd;
             border-radius: 3px;
@@ -500,7 +502,19 @@
 #body {
     .services {
         .service-item {
-            flex-basis: 20%;
+            flex-basis: 25%;
+            * {
+                word-wrap: break-word;
+                vertical-align: sub;
+                font-weight: 400;
+            }
+            .h1 {
+                margin: 0px;
+            }
+        }
+
+        .profit-item {
+            text-align: left;
         }
     }
     //  datatables
@@ -522,4 +536,16 @@
 }
 .re-white-popup {
     max-width: 300px;
+}
+
+
+.separator {
+    border-color: #2d3c51;
+}
+
+
+#loanTabs {
+    .form-horizontal .control-label {
+        line-height: 1;
+    }
 }

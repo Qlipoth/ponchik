@@ -4,7 +4,7 @@ $(document).ready(function() {
         template: [
             '<div class="my-tabs-box" @click="redsizeTable">',
                 '<tabs :class="my-tabs" :active="1">',
-                    '<tab header="Получение финансов" disabled></tab>',       
+                    '<tab header="Получение финансов" disabled></tab>',
                     '<tab :header="tabHeaders[0]">',
                         '<h3>Публикация заявки</h3><br/>',
                         '<div class="panel panel-default">',
@@ -29,13 +29,22 @@ $(document).ready(function() {
                                 '</div>',
                                 '<div class="col-md-6">',
                                     '<div class="form-group">',
-                                        '<label class="col-md-3 control-label tender-info">Информация о тендере</label>',
+                                        '<label class="col-md-3 control-label tender-info">Номер тендера</label>',
+                                        '<div class="col-md-9">',
+                                            '<div class="input-group">',
+                                                '<span class="input-group-addon"><span class="fa fa-pencil"></span></span>',
+                                                '<input id="notice" type="text" class="form-control" v-model="invNew.num" />',
+                                            '</div>',
+                                            '<strong class="help-block">Искать на &nbsp;<a href="http://zakupki.gov.ru">zakupki.gov.ru</a></strong>',
+                                        '</div>',
+                                    '</div>',
+                                    '<div class="form-group">',
+                                        '<label class="col-md-3 control-label tender-info" >Наименование площадки</label>',
                                         '<div class="col-md-9">',
                                             '<div class="input-group">',
                                                 '<span class="input-group-addon"><span class="fa fa-pencil"></span></span>',
                                                 '<input id="notice" type="text" class="form-control" v-model="invNew.name" />',
                                             '</div>',
-                                            '<strong class="help-block">Искать на &nbsp;<a href="http://zakupki.gov.ru">zakupki.gov.ru</a></strong>',
                                         '</div>',
                                     '</div>',
                                     '<div class="form-group">',
@@ -90,7 +99,7 @@ $(document).ready(function() {
                             '<re-table v-bind:rows="creditaccountrows" v-bind:config="creditaccountconfig"></re-table>',
                         '</div>',
                     '</tab>',
-                    '<tab header="Размещение финансов" disabled></tab>', 
+                    '<tab header="Размещение финансов" disabled></tab>',
                     '<tab :header="tabHeaders[6]">',
                         '<h3>Запросы на инвестирование</h3><br/>',
                         '<div class="form-group clearfix form-horizontal table-with-radio">',
@@ -162,7 +171,7 @@ $(document).ready(function() {
                                             '<input type="text" class="form-control" v-model="invType.bs" />',
                                         '</div>',
                                     '</div>',
-                                '</div>',                                
+                                '</div>',
                                 '<div class="col-md-2 col-md-offset-2">',
                                     '<button class="btn btn-primary" @click="saveInvType">Сохранить</button>',
                                 '</div>',
@@ -171,16 +180,16 @@ $(document).ready(function() {
                     '</tab>',
                 '</tabs>',
                 '<re-modal :showfooter="true" ',
-                    ':item.sync="showAcception"', 
-                    'title="Требуется подтверждение"', 
+                    ':item.sync="showAcception"',
+                    'title="Требуется подтверждение"',
                     '@save="showInvestmentDialog"',
                     'ok-text="Ок"',
                     'cancel-text="Отмена">',
                         '<h3 class="text-center">Вы действительно хотите это сделать?</h3>',
                 '</re-modal>',
                 '<re-modal :showfooter="true" ',
-                    ':item.sync="investmentDialog"', 
-                    'title="Номер карты"', 
+                    ':item.sync="investmentDialog"',
+                    'title="Номер карты"',
                     'ok-text="Ок"',
                     'cancel-text="Отмена">',
                          '<div class="form-group clearfix">',
@@ -609,8 +618,11 @@ $(document).ready(function() {
             }
         },
         ready: function() {
+            _.extend(this, {
+                invType: JSON.parse(localStorage.getItem('invType')),
+            });
         },
-        methods: { 
+        methods: {
             redsizeTable: function() {
                 $('.re-datatable').dataTable().resize();
             },
@@ -630,8 +642,10 @@ $(document).ready(function() {
             saveInvType: function() {
                 var vm = this;
                 mp.confirm('Вы действительно хотите сохранить введенные данные?', function() {
+                    localStorage.setItem('invType', JSON.stringify(vm.invType));
+                    return;
                     $.post('/?r=company%2Fpay-option-update', {
-                        Company: _.extend({}, vm.invType), 
+                        Company: _.extend({}, vm.invType),
                     })
                     .done(function() {
                         mp.alert('Данные успешно сохранены');
@@ -643,9 +657,10 @@ $(document).ready(function() {
 
             saveInvNew: function() {
                 var vm = this;
+                return mp.alert('Спасибо. Ваша заявка успешно зарегистрирована. Она появится в системе сразу после нашей проверки.')
                 mp.confirm('Вы действительно хотите отправить заявку?', function() {
                     $.post('/?r=project%2Fupdate', {
-                        Project: _.extend({}, vm.invNew), 
+                        Project: _.extend({}, vm.invNew),
                     })
                     .done(function() {
                         mp.alert('Данные успешно сохранены');
@@ -657,13 +672,14 @@ $(document).ready(function() {
 
             saveInvReq: function() {
                 var vm = this;
+                return mp.alert('Спасибо. Ваша заявка успешно зарегистрирована. Она появится в системе сразу после нашей проверки.')
                 mp.confirm('Вы действительно хотите отправить заявку?', function() {
                     var table = vm.$refs.invreqtable.$el;
                     var checked = $(table).find("input[type='radio']:checked");
                     $.post('/?r=credit%2Fcreate', {
                         Project: _.extend({}, vm.invReq, {
                             project_id: checked ? checked.first().data('id') : 0,
-                        }), 
+                        }),
                     })
                     .done(function() {
                         mp.alert('Данные успешно сохранены');

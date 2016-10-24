@@ -112,7 +112,7 @@ $(document).ready(function() {
     window.mp.confirm = function(html, cb) {
         var popup = $('<div></div>');
         popup.addClass('white-popup');
-        popup.append('<h2 class="mb-10">'+'Confirmation required!'+'</h2>');
+        popup.append('<h4 class="mb-10">'+'Требуется подтверждение!'+'</h4>');
         popup.append(html);
 
         var btns = $('<div class="mt-10"></div>');
