@@ -18,6 +18,7 @@ module.exports.navigation = [
     {
         name   : 'Л/К',
         href   : '/loan',
+        canSee : ['user'],
     },
 
     // {

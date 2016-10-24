@@ -26,12 +26,12 @@ block body
               a(href='#bycert', data-toggle='tab', aria-expanded='false') сертификат ЭП
           .panel-body.tab-content
             #bylogin.tab-pane.active
-              form.form-horizontal(action='/?r=site%2Flogin', method='POST')
+              form.form-horizontal(action='/doLogin', method='POST')
                 .form-group
                   .col-md-12
                     input.form-control(
                       type='text',
-                      name='User[username]',
+                      name='login',
                       value=form.login,
                       placeholder='Логин',
                       )
@@ -39,7 +39,7 @@ block body
                   .col-md-12
                     input.form-control(
                       type='password',
-                      name='User[password]',
+                      name='password',
                       value=form.password,
                       placeholder='Пароль'
                       )

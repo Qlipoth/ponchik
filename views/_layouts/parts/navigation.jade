@@ -7,12 +7,19 @@ div.nav-box.clearfix
         +Navigation(sails.config.navigation)
       //- li.pull-right
         //- ul.nav.navbar-nav.navbar-right.my-nav
-      li.h5.pull-right
-        a(href='/auth')
-          span.glyphicon.glyphicon-log-in
-          |  Войти
-      li.h5.pull-right
-        a(href='/register')
-          span.glyphicon.glyphicon-user
-          |  Регистрация
+      if (hasRoles('ghost'))
+        li.h5.pull-right
+          a(href='/auth')
+            span.glyphicon.glyphicon-log-in
+            |  Войти
+      if (hasRoles('ghost'))
+        li.h5.pull-right
+          a(href='/register')
+            span.glyphicon.glyphicon-user
+            |  Регистрация
+      if (hasRoles('user'))
+        li.h5.pull-right
+          a(href='/logout')
+            span.glyphicon.glyphicon-log-out
+            | Выйти
       
